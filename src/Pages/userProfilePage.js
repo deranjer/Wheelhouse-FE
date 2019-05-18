@@ -17,7 +17,7 @@ function UserSmallCard(props) {
   const [userId, setUserId] = useState(1);
   
   useEffect(() => {
-    API.get(`users/${userID}`).then(result => {
+    API.get(`users/${`userID`}`).then(result => {
       console.log(result);
       console.log(result.data);
     });
