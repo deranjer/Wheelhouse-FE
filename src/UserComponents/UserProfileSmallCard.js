@@ -1,6 +1,6 @@
 import React from 'react'
 import API from '../api';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Icon, Image, Label, LabelDetail } from 'semantic-ui-react';
 
 class UserSmallCard extends React.Component {
   constructor(props){
@@ -30,10 +30,11 @@ class UserSmallCard extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
-              <Icon name='tags' />
-              3D Modeling, Texturing, golang, deployment, UE4, Unity
-          </a>
+              <Label>3D Modeling</Label>
+              <Label>Texturing</Label>
+              <Label>golang</Label>
+              <Label>deployment</Label>
+              <Label>UE4</Label>
         </Card.Content>
       </Card>
 
