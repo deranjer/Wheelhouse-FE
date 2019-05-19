@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Nav from './PageComponents/nav';
 import HomePage from './Pages/homepage';
 import ExamplePage from './Pages/examplePage';
+import UserProfile from './Pages/userProfilePage';
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
    
           <Switch>
             <Route path="/" exact component={HomePage} />
-            
-            <Route path="/examples" component={ExamplePage} />
+            <Route path="/userprofile" exact component={UserProfile} />
+            <Route path="/examples" exact component={ExamplePage} />
           </Switch>
           <p/>
           <Nav />

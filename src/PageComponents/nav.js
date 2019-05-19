@@ -10,6 +10,9 @@ function Nav() {
                 <Link to='/examples'>
                   <li>Example Components</li>
                 </Link>
+                <Link to='/userprofile'>
+                  <li>User Profile Page</li>
+                </Link>
                 <Link to='/'>
                   <li>HomePage</li>
                 </Link>
