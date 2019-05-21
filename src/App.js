@@ -1,5 +1,5 @@
 import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
+import styled from 'styled-components/macro';
 
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Nav from './PageComponents/nav';
