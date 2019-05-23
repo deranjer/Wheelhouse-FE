@@ -1,11 +1,10 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import Nav from './PageComponents/nav';
-import HomePage from './Pages/homepage';
-import ExamplePage from './Pages/examplePage';
-import UserProfile from './Pages/userProfilePage';
+import Nav from './Components/PageComponents/nav';
+import HomePage from './Components/Pages/homepage';
+import ExamplePage from './Components/Pages/examplePage'; 
+import UserProfile from './Components/Pages/userProfilePage';
 
 function App() {
   return (

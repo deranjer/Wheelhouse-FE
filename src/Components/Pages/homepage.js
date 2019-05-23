@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTyes from 'prop-types';
 
 function HomePage() {
   return (

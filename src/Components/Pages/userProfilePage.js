@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import API from '../api';
+import React, { useState, useEffect } from 'react';
+import PropTyes from 'prop-types';
+import API from '../../api';
+
 
 var imageOverLapStyle = {
   position: 'absolute',

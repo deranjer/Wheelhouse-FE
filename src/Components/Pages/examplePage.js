@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTyes from 'prop-types';
 import UserSmallCard from '../UserComponents/UserProfileSmallCard';
 
 const ExamplePage = () => (  
