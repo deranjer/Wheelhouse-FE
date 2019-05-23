@@ -6,6 +6,7 @@ import HomePage from './Components/Pages/homepage';
 import ExamplePage from './Components/Pages/examplePage'; 
 import UserProfile from './Components/Pages/userProfilePage';
 
+
 function App() {
   return (
     <Router>
