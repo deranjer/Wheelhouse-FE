@@ -1,38 +1,49 @@
-import React, { useState, useEffect } from "react";
-import PropTyes from 'prop-types';
+import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from 'prop-types';
 import API from "../../api";
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip} from "@material-ui/core";
+import {Dialog, DialogActions, DialogTitle} from "@material-ui/core";
+import {Card, CardContent, CardHeader} from "@material-ui/core";
+import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Divider from '@material-ui/core/Divider';
-import Chip from '@material-ui/core/Chip';
-import { IconButton } from "@material-ui/core";
 
 
 const UserSmallCard = (props) => {
   const [userId, setUserId] = useState(1);
+  const [anchorEl, setAnchorEl] = useState(null); //Dropdown menu
+  const [blockConfirm, setBlockConfirm] = useState(false) //Block User Dialog
   
   useEffect(() => {
     API.get(`users/${`userID`}`).then(result => {
+      //TODO: Pull user data from API
       console.log(result);
       console.log(result.data);
     });
   }, [userId]);
 
-  const handleClick = (event) => {
+  const openDropdown = useCallback((event) => setAnchorEl(event.currentTarget), []); //Open the dropdown menu
+  const closeDropdown = useCallback(() => setAnchorEl(null), []); //Close dropdown menu
+  const blockConfirmOpen = useCallback(() => setBlockConfirm(true), []); //open dialog box
+  
+  const blockConfirmClose = useCallback(() => {
+    setBlockConfirm(false)  //Close Dialog
+    setAnchorEl(null) //Close Dropdown
+    },
+    [], 
+  ); 
 
-  }
+  const blockConfirmSend = useCallback(() => {
+    setBlockConfirm(false) //Close Dialog
+    setAnchorEl(null) //Close Dropdown
+    //TODO: Send BLOCK data to API
+    },
+    [],
+  );
   
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Grid container justify="center" spacing={16} wrap="nowrap">
+        <Grid container justify="center" spacing={6} wrap="nowrap">
           <Grid item style={{ maxWidth: "400px"}}>
             <Card>
               <CardHeader
@@ -40,12 +51,38 @@ const UserSmallCard = (props) => {
                 subheader="Looking to Collaborate"
                 avatar={<Avatar aria-label="Recipe">D</Avatar>}
                 action={
-                  <IconButton>
-                    <MoreVertIcon />
-                    
-                  </IconButton>
-                }
-              
+                  <React.Fragment>
+                    <IconButton onClick={openDropdown}>
+                      <MoreVertIcon />                    
+                    </IconButton>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      onClose={closeDropdown}
+                    >
+                      <MenuItem onClick={closeDropdown}>Follow</MenuItem>
+                      <MenuItem onClick={closeDropdown}>Message</MenuItem>
+                      <MenuItem onClick={blockConfirmOpen}>Block</MenuItem>
+                    </Menu>
+                    <Dialog
+                      //fullScreen={fullScreen}
+                      open={blockConfirm}
+                      onClose={blockConfirmClose}
+                      aria-labelledby="blockConfirm"
+                    >
+                      <DialogTitle id="blockConfirm">{"Are you sure you want to block this user?"}</DialogTitle>
+                      <DialogActions>
+                        <Button onClick={blockConfirmSend} color="secondary">
+                          Agree
+                        </Button>
+                        <Button onClick={blockConfirmClose} color="primary">
+                          Cancel
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
+                  </React.Fragment>
+                }             
               />
               <CardContent>
                 <Typography>
@@ -66,17 +103,18 @@ const UserSmallCard = (props) => {
                   <Chip label="3d Modeling" style={{ margin: "5px"}}/>
                 </Grid>
               </CardContent> 
-
-
             </Card>
           </Grid>
         </Grid>
-
       </Grid>
-    </Grid>
-
-      
+    </Grid>     
   );
 }
+
+UserSmallCard.propTypes = {
+  userID: PropTypes.string
+  //TODO: Add More PropTypes
+}
+
 
 export default UserSmallCard;
