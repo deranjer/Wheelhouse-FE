@@ -41,9 +41,7 @@ const UserSmallCard = (props) => {
   );
   
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={6} wrap="nowrap">
+
           <Grid item style={{ maxWidth: "400px"}}>
             <Card>
               <CardHeader
@@ -104,10 +102,7 @@ const UserSmallCard = (props) => {
                 </Grid>
               </CardContent> 
             </Card>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>     
+          </Grid>   
   );
 }
 

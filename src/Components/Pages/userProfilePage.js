@@ -4,6 +4,7 @@ import API from '../../api';
 import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip, Paper, Card, CardContent, CardDescription} from "@material-ui/core";
 import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import UserPortfolioCard from '../UserComponents/UserPortfolioCard';
 
 var imageOverLapStyle = {
   position: 'absolute',
@@ -69,21 +70,44 @@ const UserProfile = (props) => {
         </Grid>
         <Grid item xs={6}>{/*  Main Page Content */}
           <Grid container justify="flex-end">
-            <Button style={{ margin: "5px"}} variant="contained" color="primary">Message</Button>
-            <Button style={{ margin: "5px"}} variant="contained" color="primary">Follow</Button>
+            <Button style={{ margin: "4px"}} variant="contained" color="primary">Message</Button>
+            <Button style={{ margin: "4px"}} variant="contained" color="primary">Follow</Button>
           </Grid>
-          
-          
-          
-          <Grid container justify="center">
-            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
-            <Chip label="Texturing" style={{ margin: "5px"}}/>
-            <Chip label="golang" style={{ margin: "5px"}}/>
-            <Chip label="UE4" style={{ margin: "5px"}}/>
-            <Chip label="Texturing" style={{ margin: "5px"}}/>
-            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
+          <Grid container justify="flex-start">
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>{/*  20 char max for tags */}
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
+            <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
           </Grid>
-        </Grid>
+          <Typography variant='h4' align="center">Portfolio</Typography>
+          <Grid container justify="flex-start" spacing={4}>
+            <Grid item >
+              <UserPortfolioCard />
+            </Grid>
+            <Grid item >
+              <UserPortfolioCard />
+            </Grid>
+            <Grid item >
+              <UserPortfolioCard />
+            </Grid>
+            <Grid item >
+                <UserPortfolioCard />
+            </Grid>
+            <Grid item >
+                <UserPortfolioCard />
+            </Grid>
+            <Grid item >
+                <UserPortfolioCard />
+            </Grid>
+          </Grid>
+          <Typography variant='h4' align="center">Projects</Typography>
+          <Grid container justify="flex-start" spacing={4}>
+          </Grid>
+        </Grid>{/* End Main Page Content */}
+        
         <Grid item xs={2}>{/*  Right side Bottom bar */}
           <Paper style={{height: '100%'}}>Right side Bottom bar</Paper>
         </Grid>
