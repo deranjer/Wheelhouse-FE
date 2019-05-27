@@ -41,68 +41,67 @@ const UserSmallCard = (props) => {
   );
   
   return (
-
-          <Grid item style={{ maxWidth: "400px"}}>
-            <Card>
-              <CardHeader
-                title="deranjer"
-                subheader="Looking to Collaborate"
-                avatar={<Avatar aria-label="Recipe">D</Avatar>}
-                action={
-                  <React.Fragment>
-                    <IconButton onClick={openDropdown}>
-                      <MoreVertIcon />                    
-                    </IconButton>
-                    <Menu
-                      id="simple-menu"
-                      anchorEl={anchorEl}
-                      open={Boolean(anchorEl)}
-                      onClose={closeDropdown}
-                    >
-                      <MenuItem onClick={closeDropdown}>Follow</MenuItem>
-                      <MenuItem onClick={closeDropdown}>Message</MenuItem>
-                      <MenuItem onClick={blockConfirmOpen}>Block</MenuItem>
-                    </Menu>
-                    <Dialog
-                      //fullScreen={fullScreen}
-                      open={blockConfirm}
-                      onClose={blockConfirmClose}
-                      aria-labelledby="blockConfirm"
-                    >
-                      <DialogTitle id="blockConfirm">{"Are you sure you want to block this user?"}</DialogTitle>
-                      <DialogActions>
-                        <Button onClick={blockConfirmSend} color="secondary">
-                          Agree
-                        </Button>
-                        <Button onClick={blockConfirmClose} color="primary">
-                          Cancel
-                        </Button>
-                      </DialogActions>
-                    </Dialog>
-                  </React.Fragment>
-                }             
-              />
-              <CardContent>
-                <Typography>
-                  Experienced 3D Modeler in Blender. 
-                  Experienced in Substance Painter. 
-                  Looking for a challange.
-                  </Typography>
-                <Typography align="center" variant="h6">Skills</Typography>
-                <Divider variant="fullWidth" style={{ margin: "5px"}}/>
-                <Grid container justify="center">
-                  <Chip label="3d Modeling" style={{ margin: "5px"}}/>
-                  <Chip label="Texturing" style={{ margin: "5px"}}/>
-                  <Chip label="golang" style={{ margin: "5px"}}/>
-                </Grid>
-                <Grid container justify="center">
-                  <Chip label="UE4" style={{ margin: "5px"}}/>
-                  <Chip label="Texturing" style={{ margin: "5px"}}/>
-                  <Chip label="3d Modeling" style={{ margin: "5px"}}/>
-                </Grid>
-              </CardContent> 
-            </Card>
-          </Grid>   
+    <Grid item style={{ maxWidth: "400px"}}>
+      <Card style={{ height: "280px"}}>
+        <CardHeader
+          title="deranjer"
+          subheader="Looking to Collaborate"
+          avatar={<Avatar aria-label="Recipe">D</Avatar>}
+          action={
+            <React.Fragment>
+              <IconButton onClick={openDropdown}>
+                <MoreVertIcon />                    
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={closeDropdown}
+              >
+                <MenuItem onClick={closeDropdown}>Follow</MenuItem>
+                <MenuItem onClick={closeDropdown}>Message</MenuItem>
+                <MenuItem onClick={blockConfirmOpen}>Block</MenuItem>
+              </Menu>
+              <Dialog
+                //fullScreen={fullScreen}
+                open={blockConfirm}
+                onClose={blockConfirmClose}
+                aria-labelledby="blockConfirm"
+              >
+                <DialogTitle id="blockConfirm">{"Are you sure you want to block this user?"}</DialogTitle>
+                <DialogActions>
+                  <Button onClick={blockConfirmSend} color="secondary">
+                    Agree
+                  </Button>
+                  <Button onClick={blockConfirmClose} color="primary">
+                    Cancel
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </React.Fragment>
+          }             
+        />
+        <CardContent>
+          <Typography>
+            Experienced 3D Modeler in Blender. 
+            Experienced in Substance Painter. 
+            Looking for a challange.
+            </Typography>
+          <Typography align="center" variant="h6">Skills</Typography>
+          <Divider variant="fullWidth" style={{ margin: "5px"}}/>
+          <Grid container justify="center">
+            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
+            <Chip label="Texturing" style={{ margin: "5px"}}/>
+            <Chip label="golang" style={{ margin: "5px"}}/>
+          </Grid>
+          <Grid container justify="center">
+            <Chip label="UE4" style={{ margin: "5px"}}/>
+            <Chip label="Texturing" style={{ margin: "5px"}}/>
+            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
+          </Grid>
+        </CardContent> 
+      </Card>
+    </Grid>   
   );
 }
 
