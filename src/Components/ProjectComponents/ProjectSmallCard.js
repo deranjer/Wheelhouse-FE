@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 import API from "../../api";
-import {Menu, MenuItem,  Avatar, Typography, Grid, LinearProgress, CircularProgress} from "@material-ui/core";
+import {Menu, MenuItem,  Avatar, Typography, Grid} from "@material-ui/core";
 import {Dialog, DialogActions, DialogTitle} from "@material-ui/core";
 import {Card, CardContent, CardHeader, CardMedia} from "@material-ui/core";
 import {IconButton, Button} from "@material-ui/core";
@@ -97,7 +97,7 @@ const ProjectSmallCard = (props) => {
                     <Avatar aria-label="OpenSpots">4</Avatar>
                 </Grid>
                 <Grid item xs={5}>
-                  <Typography variant="h6" align="center">Video Gamer</Typography> 
+                  <Typography variant="h6" align="center">Video Game</Typography> 
                 </Grid>
                 <Grid item xs={4} style={{float: "right"}}>
                 <Typography align="center">Progress</Typography>
