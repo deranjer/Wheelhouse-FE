@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import API from "../../api";
 import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip} from "@material-ui/core";
 import {Dialog, DialogActions, DialogTitle} from "@material-ui/core";
-import {Card, CardContent, CardHeader} from "@material-ui/core";
+import {Card, CardContent, CardHeader, CardActions} from "@material-ui/core";
 import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
-const UserSmallCard = (props) => {
+const StatusUpdate = (props) => {
   const [userId, setUserId] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null); //Dropdown menu
   const [blockConfirm, setBlockConfirm] = useState(false) //Block User Dialog
@@ -41,11 +41,11 @@ const UserSmallCard = (props) => {
   );
   
   return (
-    <Grid item style={{ maxWidth: "400px"}}>
-      <Card style={{ height: "280px"}}>
+    <Grid item style={{ maxWidth: "600px"}}>
+      <Card style={{ maxHeight: "600px"}}>
         <CardHeader
           title="deranjer"
-          subheader="Looking to Collaborate"
+          subheader="1 hour ago"
           avatar={<Avatar aria-label="Recipe">D</Avatar>}
           action={
             <React.Fragment>
@@ -83,32 +83,31 @@ const UserSmallCard = (props) => {
         />
         <CardContent>
           <Typography>
-            Experienced 3D Modeler in Blender. 
-            Experienced in Substance Painter. 
-            Looking for a challange.
+            This is a text status update.  We can either have a text limit or collapse the text and do a "see more" like Facebook.
             </Typography>
-          <Typography align="center" variant="h6">Skills</Typography>
+          
           <Divider variant="fullWidth" style={{ margin: "5px"}}/>
-          <Grid container justify="center">
-            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
-            <Chip label="Texturing" style={{ margin: "5px"}}/>
-            <Chip label="golang" style={{ margin: "5px"}}/>
-          </Grid>
-          <Grid container justify="center">
-            <Chip label="UE4" style={{ margin: "5px"}}/>
-            <Chip label="Texturing" style={{ margin: "5px"}}/>
-            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
-          </Grid>
+          <CardActions>
+              <Button size="small" color="primary">
+                  React
+              </Button>
+              <Button size="small" color="primary">
+                  Comment
+              </Button>
+              <Button size="small" color="primary">
+                  Reshare
+              </Button>
+          </CardActions>
         </CardContent> 
       </Card>
     </Grid>   
   );
 }
 
-UserSmallCard.propTypes = {
+StatusUpdate.propTypes = {
   userID: PropTypes.string
   //TODO: Add More PropTypes
 }
 
 
-export default UserSmallCard;
+export default StatusUpdate;

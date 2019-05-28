@@ -15,6 +15,9 @@ function Nav() {
                 <Link to='/'>
                   <li>HomePage</li>
                 </Link>
+                <Link to='/projectpage'>
+                  <li>Project Page</li>
+                </Link>
             </ul>
         </nav>
   );

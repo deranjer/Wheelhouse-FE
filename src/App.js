@@ -5,22 +5,28 @@ import Nav from './Components/PageComponents/nav';
 import HomePage from './Components/Pages/homepage';
 import ExamplePage from './Components/Pages/examplePage'; 
 import UserProfile from './Components/Pages/userProfilePage';
+import ProjectProfile from './Components/Pages/projectPage';
+import { ThemeProvider } from '@material-ui/styles';
+import theme from './MyMuiTheme';
 
 
 function App() {
   return (
-    <Router>
-      <div> 
-   
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/userprofile" exact component={UserProfile} />
-            <Route path="/examples" exact component={ExamplePage} />
-          </Switch>
-          <p/>
-          <Nav />
-      </div>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div> 
+    
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/userprofile" exact component={UserProfile} />
+              <Route path="/examples" exact component={ExamplePage} />
+              <Route path="/projectpage" exact component={ProjectProfile} />
+            </Switch>
+            <p/>
+            <Nav />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

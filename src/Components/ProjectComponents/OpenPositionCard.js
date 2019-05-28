@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 import API from "../../api";
-import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip} from "@material-ui/core";
+import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip, CardActions} from "@material-ui/core";
 import {Dialog, DialogActions, DialogTitle} from "@material-ui/core";
 import {Card, CardContent, CardHeader} from "@material-ui/core";
 import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
-const UserSmallCard = (props) => {
+const OpenPositionCard = (props) => {
   const [userId, setUserId] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null); //Dropdown menu
   const [blockConfirm, setBlockConfirm] = useState(false) //Block User Dialog
@@ -42,11 +42,10 @@ const UserSmallCard = (props) => {
   
   return (
     <Grid item style={{ maxWidth: "400px"}}>
-      <Card style={{ height: "280px"}}>
+      <Card style={{ maxHeight: "280px"}}>
         <CardHeader
-          title="deranjer"
-          subheader="Looking to Collaborate"
-          avatar={<Avatar aria-label="Recipe">D</Avatar>}
+          title="3D Artist"
+          subheader= "Name of Game"
           action={
             <React.Fragment>
               <IconButton onClick={openDropdown}>
@@ -58,9 +57,8 @@ const UserSmallCard = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={closeDropdown}
               >
-                <MenuItem onClick={closeDropdown}>Follow</MenuItem>
-                <MenuItem onClick={closeDropdown}>Message</MenuItem>
-                <MenuItem onClick={blockConfirmOpen}>Block</MenuItem>
+                <MenuItem onClick={closeDropdown}>Report</MenuItem>
+                <MenuItem onClick={blockConfirmOpen}>Hide</MenuItem>
               </Menu>
               <Dialog
                 //fullScreen={fullScreen}
@@ -68,7 +66,7 @@ const UserSmallCard = (props) => {
                 onClose={blockConfirmClose}
                 aria-labelledby="blockConfirm"
               >
-                <DialogTitle id="blockConfirm">{"Are you sure you want to block this user?"}</DialogTitle>
+                <DialogTitle id="blockConfirm">{"Are you sure you want to hide this posting?"}</DialogTitle>
                 <DialogActions>
                   <Button onClick={blockConfirmSend} color="secondary">
                     Agree
@@ -82,33 +80,28 @@ const UserSmallCard = (props) => {
           }             
         />
         <CardContent>
-          <Typography>
-            Experienced 3D Modeler in Blender. 
-            Experienced in Substance Painter. 
-            Looking for a challange.
+            <Typography>
+                Looking for a 3D modeler for our game to do char modeling.
             </Typography>
-          <Typography align="center" variant="h6">Skills</Typography>
           <Divider variant="fullWidth" style={{ margin: "5px"}}/>
           <Grid container justify="center">
             <Chip label="3d Modeling" style={{ margin: "5px"}}/>
             <Chip label="Texturing" style={{ margin: "5px"}}/>
             <Chip label="golang" style={{ margin: "5px"}}/>
           </Grid>
-          <Grid container justify="center">
-            <Chip label="UE4" style={{ margin: "5px"}}/>
-            <Chip label="Texturing" style={{ margin: "5px"}}/>
-            <Chip label="3d Modeling" style={{ margin: "5px"}}/>
-          </Grid>
+          <CardActions>
+              <Button size="small">Apply</Button>
+          </CardActions>
         </CardContent> 
       </Card>
     </Grid>   
   );
 }
 
-UserSmallCard.propTypes = {
+OpenPositionCard.propTypes = {
   userID: PropTypes.string
   //TODO: Add More PropTypes
 }
 
 
-export default UserSmallCard;
+export default OpenPositionCard;
