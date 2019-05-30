@@ -6,6 +6,7 @@ import HomePage from './Components/Pages/homepage';
 import ExamplePage from './Components/Pages/examplePage'; 
 import UserProfile from './Components/Pages/userProfilePage';
 import ProjectProfile from './Components/Pages/projectPage';
+import SearchPage from './Components/Pages/searchPage';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './MyMuiTheme';
 
@@ -21,6 +22,7 @@ function App() {
               <Route path="/userprofile" exact component={UserProfile} />
               <Route path="/examples" exact component={ExamplePage} />
               <Route path="/projectpage" exact component={ProjectProfile} />
+              <Route path="/searchpage" exact component={SearchPage} />
             </Switch>
             <p/>
             <Nav />

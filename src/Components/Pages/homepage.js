@@ -1,39 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import PropTyes from 'prop-types';
+import PropTypes from 'prop-types';
 import API from '../../api';
-import {Menu, MenuItem,  Avatar, Typography, Grid, AppBar, Toolbar, Paper, InputBase} from "@material-ui/core";
+import {Menu, MenuItem, Typography, Grid, Paper} from "@material-ui/core";
 import {IconButton, Button, Fab} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-
-
-
-
-var profileImageStyle = {
-  width: '300px',
-  height: '300px',
-  borderRadius: '50%'
-}
-
-
+import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 
 const HomePage = (props) => {
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>{/*  Top Menu Bar */}
-        <AppBar position="static">
-          <Toolbar>
-            <Grid container justify="flex-end">
-              <Button color="inherit">Browse Users</Button>
-              <Button color="inherit">Profile</Button>
-              <Button color="inherit">Browse Projects</Button>
-              <SearchIcon />
-              <InputBase placeholder="Search…" />
-              <Button><Avatar>H</Avatar></Button>{/* TODO: Figure out how to make an avatar directly 'buttonable' */}
-            </Grid>
-          </Toolbar>
-        </AppBar>
+        <TopNavBar />
       </Grid>{/* End Top Menu Bar */}
       <Grid item xs={12}><Paper style={{height: "100px"}}>Separation between top nav bar and main text</Paper></Grid>{/* Separation between top nav bar and main text */}
       <Grid container justify="center">{/* Main Page Content */}
@@ -63,5 +41,11 @@ const HomePage = (props) => {
     </Grid>   
   );
 }
-  
+
+HomePage.propTypes = {
+  userID: PropTypes.string
+  //TODO: Add More PropTypes
+}
+
+
 export default HomePage

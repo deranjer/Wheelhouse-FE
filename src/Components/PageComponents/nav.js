@@ -18,6 +18,9 @@ function Nav() {
                 <Link to='/projectpage'>
                   <li>Project Page</li>
                 </Link>
+                <Link to='/searchpage'>
+                  <li>Search Page</li>
+                </Link>
             </ul>
         </nav>
   );
