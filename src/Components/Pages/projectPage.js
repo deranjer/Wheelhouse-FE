@@ -8,6 +8,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import UserProfileSmallCard from '../UserComponents/UserProfileSmallCard';
 import ProjectInfoCard from '../ProjectComponents/ProjectInfoCard';
 import OpenPositionCard from '../ProjectComponents/OpenPositionCard';
+import UserProjectPositionCard from '../UserComponents/UserProjectPositionCard';
 import StatusUpdate from '../PageComponents/statusUpdate';
 
 
@@ -131,22 +132,22 @@ const ProjectProfile = (props) => {
           {tabValue === 1 && 
             <Grid container justify="flex-start" spacing={2}>
               <Grid item >
-                <UserProfileSmallCard />
+                <UserProjectPositionCard />
               </Grid>
               <Grid item >
-                <UserProfileSmallCard />
+                <UserProjectPositionCard />
               </Grid>
               <Grid item >
-                <UserProfileSmallCard />
+                <UserProjectPositionCard />
               </Grid>
               <Grid item >
-               <UserProfileSmallCard />
+               <UserProjectPositionCard />
               </Grid>
               <Grid item >
-              <UserProfileSmallCard />
+              <UserProjectPositionCard />
               </Grid>
               <Grid item >
-                <UserProfileSmallCard />
+                <UserProjectPositionCard />
               </Grid>
             </Grid>
           }

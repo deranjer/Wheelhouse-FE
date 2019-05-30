@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 import API from "../../api";
 import {Menu, MenuItem,  Avatar, Typography, Grid} from "@material-ui/core";
-import {Dialog, DialogActions, DialogTitle} from "@material-ui/core";
+import {Dialog, DialogActions, DialogTitle, Tooltip} from "@material-ui/core";
 import {Card, CardContent, CardHeader, CardMedia} from "@material-ui/core";
 import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -94,15 +94,22 @@ const ProjectSmallCard = (props) => {
             <CardContent>
               <Grid container justify="flex-start">
                 <Grid item xs={3}>
+                  <Tooltip title="Open Positions">
                     <Avatar aria-label="OpenSpots">4</Avatar>
+                  </Tooltip>
                 </Grid>
-                <Grid item xs={5}>
-                  <Typography variant="h6" align="center">Video Game</Typography> 
-                </Grid>
-                <Grid item xs={4} style={{float: "right"}}>
-                <Typography align="center">Progress</Typography>
-                  <Line percent="100" strokeWidth="5" strokeColor="#0b2c60" />
-                </Grid>
+                <Tooltip title="Project Category">
+                  <Grid item xs={5}>
+                    <Typography variant="h6" align="center">Video Game</Typography>    
+                  </Grid>
+                </Tooltip>
+                <Tooltip title="Project Progress">
+                  <Grid item xs={4} style={{float: "right"}}>
+                      <Typography align="center">Progress</Typography>
+                      <Line percent="100" strokeWidth="5" strokeColor="#0b2c60" />
+                  </Grid>
+                </Tooltip>
+                
               </Grid>
 
               

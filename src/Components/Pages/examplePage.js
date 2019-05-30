@@ -4,6 +4,7 @@ import UserSmallCard from '../UserComponents/UserProfileSmallCard';
 import UserPortfolioCard from '../UserComponents/UserPortfolioCard';
 import ProjectSmallCard from '../ProjectComponents/ProjectSmallCard';
 import StatusUpdate from '../PageComponents/statusUpdate';
+import TestComp from '../testComp';
 import {Grid} from "@material-ui/core";
 
 const ExamplePage = () => (  
@@ -23,6 +24,10 @@ const ExamplePage = () => (
       StatusUpdate:
       <Grid container justify="center">
         <StatusUpdate />
+      </Grid>
+      TestComp:
+      <Grid container justify="center">
+        <TestComp />
       </Grid>
     </Grid>
 )
