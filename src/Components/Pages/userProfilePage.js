@@ -5,10 +5,11 @@ import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip, Paper, Card, C
 import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import UserPortfolioCard from '../UserComponents/UserPortfolioCard';
+import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 
 var imageOverLapStyle = {
   position: 'absolute',
-  top: '100px',
+  top: '150px',
 }
 
 var profileImageStyle = {
@@ -37,7 +38,10 @@ const UserProfile = (props) => {
 
   return (
     <div>
-      <Grid container spacing={1 }>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>{/*  Top Menu Bar */}
+          <TopNavBar /> 
+        </Grid>{/* End Top Menu Bar */}
         <Grid item xs={2}>{/*  Left Side Top Bar */}
           <Paper style={{height: '100%'}}>Left Side Top Bar</Paper>
         </Grid>

@@ -21,6 +21,9 @@ function Nav() {
                 <Link to='/searchpage'>
                   <li>Search Page</li>
                 </Link>
+                <Link to='/usersettings'>
+                  <li>UserSettingsPage</li>
+                </Link>
             </ul>
         </nav>
   );

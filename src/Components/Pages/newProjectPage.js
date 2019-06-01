@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 
 
-const SearchPage = (props) => {
+const NewProjectPage = (props) => {
 
   return (
     <Grid container spacing={2}>
@@ -17,14 +17,14 @@ const SearchPage = (props) => {
         
       </Grid>{/* End Top Menu Bar */}
       <Grid item xs={12}>
-          <Typography variant="h6" align="center">Search filters here</Typography>
+
       </Grid>{/* Search filter options here */}
       <Grid container justify="center">{/* Main Page Content */}
         </Grid>
       <Grid container justify="center">
         <Grid item xs={2}></Grid>{/* Left Side Padding */}
         <Grid item xs={8}>
-            <Paper style={{height: "400px"}}>Search would be put here</Paper>  
+            <Paper style={{height: "400px"}}>Project Details Form here</Paper>  
         </Grid>
         <Grid item xs={2}></Grid>{/* Right Side Padding */}
       </Grid>
@@ -33,9 +33,9 @@ const SearchPage = (props) => {
   );
 }
 
-SearchPage.propTypes = {
+NewProjectPage.propTypes = {
   userID: PropTypes.string
   //TODO: Add More PropTypes
 }
   
-export default SearchPage
+export default NewProjectPage
