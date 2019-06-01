@@ -9,7 +9,7 @@ import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 import ProfileSettingsCard from '../UserComponents/profileSettingsCard';
 
 
-const UserSettingsPage = (props) => {
+const MessagesPage = (props) => {
   const [userId, setUserId] = useState(1);
   const [card, setCard] = useState('Profile')
 
@@ -67,9 +67,9 @@ const UserSettingsPage = (props) => {
   );
 }
 
-UserSettingsPage.propTypes = {
+MessagesPage.propTypes = {
     userID: PropTypes.string
     //TODO: Add More PropTypes
   }
   
-export default UserSettingsPage
+export default MessagesPage

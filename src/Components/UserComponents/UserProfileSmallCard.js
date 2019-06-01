@@ -14,7 +14,8 @@ const UserSmallCard = (props) => {
   const [blockConfirm, setBlockConfirm] = useState(false) //Block User Dialog
   
   useEffect(() => {
-    API.get(`users/${`userID`}`).then(result => {
+    //API.get(`users/${`userID`}`).then(result => {
+    API.get(`users/1`).then(result => {
       //TODO: Pull user data from API
       console.log(result);
       console.log(result.data);

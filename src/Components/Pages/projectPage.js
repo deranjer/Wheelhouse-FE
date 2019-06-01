@@ -10,6 +10,7 @@ import ProjectInfoCard from '../ProjectComponents/ProjectInfoCard';
 import OpenPositionCard from '../ProjectComponents/OpenPositionCard';
 import UserProjectPositionCard from '../UserComponents/UserProjectPositionCard';
 import StatusUpdate from '../PageComponents/statusUpdate';
+import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 
 
 var profileBGImageStyle = {
@@ -37,6 +38,9 @@ const ProjectProfile = (props) => {
   return (
     <div>
       <Grid container spacing={1 }>
+        <Grid item xs={12}>{/*  Top Menu Bar */}
+          <TopNavBar /> 
+        </Grid>{/* End Top Menu Bar */}
         <Grid item xs={2}>{/*  Left Side Top Bar */}
           <Paper style={{height: '100%'}}>Left Side Top Bar</Paper>
         </Grid>
