@@ -9,7 +9,7 @@ import ProjectProfile from './Components/Pages/projectPage';
 import SearchPage from './Components/Pages/searchPage';
 import UserSettingsPage from './Components/Pages/userSettingsPage';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from './MyMuiTheme';
+import theme from './theme';
 
 
 function App() {
