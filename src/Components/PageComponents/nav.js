@@ -24,6 +24,9 @@ function Nav() {
                 <Link to='/usersettings'>
                   <li>UserSettingsPage</li>
                 </Link>
+                <Link to='/messagespage'>
+                  <li>MessagesPage</li>
+                </Link>
             </ul>
         </nav>
   );
