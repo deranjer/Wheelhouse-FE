@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import API from '../../api';
-import {Menu, MenuItem,  MenuList, Avatar, Typography, Grid, AppBar, Toolbar, Paper, InputBase} from "@material-ui/core";
+import {Menu, MenuItem,  MenuList, Avatar, Typography, Grid, TextField, Paper, InputBase} from "@material-ui/core";
 import {IconButton, Button, Fab} from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+import MessageCard from '../PageComponents/messageCard';
 import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 import ProfileSettingsCard from '../UserComponents/profileSettingsCard';
 
@@ -12,6 +11,7 @@ import ProfileSettingsCard from '../UserComponents/profileSettingsCard';
 const MessagesPage = (props) => {
   const [userId, setUserId] = useState(1);
   const [card, setCard] = useState('Profile')
+  const [replyBlock, setReplyBlock] = useState(null)
 
   useEffect(() => {
     //API.get(`users/${`userID`}`).then(result => {
@@ -22,14 +22,33 @@ const MessagesPage = (props) => {
     });
   }, [userId]);
 
-  const openProfile = useCallback(() => setCard('Profile'), []); //Open the dropdown menu
-  const openProjects = useCallback(() => setCard('Projects'), []); //Close dropdown menu
-  const openContacts = useCallback(() => setCard("Contacts"), []); //open dialog box
+  const openProfile = useCallback(() => {
+    setReplyBlock(false)
+    setCard('Profile')
+    }, 
+    []); //Open the dropdown menu
 
-  const showCard = () => {//  Function to switch between settings page "tabs" 
+  const openProjects = useCallback(() => {
+    setReplyBlock(false)
+    setCard('Projects')
+  },
+  []); //Close dropdown menu
+  const openContacts = useCallback(() => {
+    setReplyBlock(false)
+    setCard("Contacts") 
+  },
+  []); //open dialog box
+
+  const sendMessage = useCallback(() => { //TODO: send message
+    API.put('messages/send/1').then(result => {
+      console.log(result)
+    })
+  })
+
+  const showMessage = () => {//  Function to switch between settings page "tabs" 
     switch(card) {
       case 'Profile':
-        return <ProfileSettingsCard userID='1' /> 
+        return <MessageCard onReplyClick={setReplyBlock} />/* Add the reply textarea after hitting reply button */
       case 'Projects':
         return <ProfileSettingsCard userID='2' />
       case 'Contacts':
@@ -52,13 +71,28 @@ const MessagesPage = (props) => {
         <Grid item xs={2}></Grid>{/* Left Side Padding */}
         <Grid item xs={1}>{/* Left Menu */}
           <MenuList>
-            <MenuItem onClick={openProfile}> Profile </MenuItem>
-            <MenuItem onClick={openProjects}> Projects </MenuItem>
-            <MenuItem onClick={openContacts}> Contacts </MenuItem>
+            <MenuItem onClick={openProfile}> User1 </MenuItem>
+            <MenuItem onClick={openProjects}> User2 </MenuItem>
+            <MenuItem onClick={openContacts}> User3 </MenuItem>
           </MenuList>
         </Grid>
         <Grid item xs={7}>
-          {showCard()}
+          {showMessage()}
+          {replyBlock ? ( 
+            <Paper>
+              <TextField 
+                placeholder="Write a response here"
+                fullWidth
+                multiline
+                rows="10"
+                variant="filled"
+              >
+              </TextField>
+              <Button style={{float: "right"}} onClick={sendMessage}>Submit</Button>
+            </Paper>
+          ): (<Paper></Paper>
+          )}{/* Add the reply textarea after hitting reply button */}
+          
         </Grid>
         <Grid item xs={2}></Grid>{/* Right Side Padding */}
       </Grid>

@@ -8,6 +8,7 @@ import UserProfile from './Components/Pages/userProfilePage';
 import ProjectProfile from './Components/Pages/projectPage';
 import SearchPage from './Components/Pages/searchPage';
 import UserSettingsPage from './Components/Pages/userSettingsPage';
+import MessagesPage from './Components/Pages/messagesPage';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './theme';
 
@@ -25,6 +26,7 @@ function App() {
               <Route path="/projectpage" exact component={ProjectProfile} />
               <Route path="/searchpage" exact component={SearchPage} />
               <Route path="/usersettings" exact component={UserSettingsPage} />
+              <Route path="/messagespage" exact component={MessagesPage} />
             </Switch>
             <p/>
             <Nav />
