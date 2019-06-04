@@ -27,6 +27,9 @@ function Nav() {
                 <Link to='/messagespage'>
                   <li>MessagesPage</li>
                 </Link>
+                <Link to='/newprojectpage'>
+                  <li>NewProjectPage</li>
+                </Link>
             </ul>
         </nav>
   );
