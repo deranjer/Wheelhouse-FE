@@ -18,24 +18,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div> 
-    
-            <Switch>
-              <Route path="/" exact component={HomePage} />
-              <Route path="/userprofile" exact component={UserProfile} />
-			  <Route path='/login' exact component={LoginPage} />
-              <Route path="/examples" exact component={ExamplePage} />
-              <Route path="/projectpage" exact component={ProjectProfile} />
-              <Route path="/searchpage" exact component={SearchPage} />
-              <Route path="/usersettings" exact component={UserSettingsPage} />
-              <Route path="/messagespage" exact component={MessagesPage} />
-              <Route path="/newprojectpage" exact component={NewProjectPage} />
-            </Switch>
-            <p/>
-            <Nav />
-        </div>
+        <div>    
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/userprofile" exact component={UserProfile} />
+            <Route path='/login' exact component={LoginPage} />
+            <Route path="/examples" exact component={ExamplePage} />
+            <Route path="/projectpage" exact component={ProjectProfile} />
+            <Route path="/searchpage" exact component={SearchPage} />
+            <Route path="/usersettings" exact component={UserSettingsPage} />
+            <Route path="/messagespage" exact component={MessagesPage} />
+            <Route path="/newprojectpage" exact component={NewProjectPage} />
+          </Switch>
+          <p/>
+          <Nav />
+      </div>
       </Router>
     </ThemeProvider>
   );
+}
 
 export default App;
