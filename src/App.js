@@ -11,6 +11,7 @@ import UserSettingsPage from './Components/Pages/userSettingsPage';
 import MessagesPage from './Components/Pages/messagesPage';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './theme';
+import NewProjectPage from './Components/Pages/newProjectPage';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
               <Route path="/searchpage" exact component={SearchPage} />
               <Route path="/usersettings" exact component={UserSettingsPage} />
               <Route path="/messagespage" exact component={MessagesPage} />
+              <Route path="/newprojectpage" exact component={NewProjectPage} />
             </Switch>
             <p/>
             <Nav />
