@@ -24,12 +24,21 @@ const ProjectProfile = (props) => {
   const [tabValue, setTabValue] = useState(0);//Default to Project Update Tab
 
 
+  async function getUser() {
+    try {
+      const response = await API.get(`users/1`);
+      console.log(response);
+      console.log(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    API.get(`users/${userID}`).then(result => {
-      console.log(result);
-      console.log(result.data);
-    });
-  }, [userID]);
+    getUser();
+  }, []);
+
 
   function handleTabSwitch(event, tabValue) {
     setTabValue(tabValue)

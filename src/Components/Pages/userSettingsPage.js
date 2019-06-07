@@ -10,17 +10,26 @@ import ProfileSettingsCard from '../UserComponents/profileSettingsCard';
 
 
 const UserSettingsPage = (props) => {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUser] = useState(0);
   const [card, setCard] = useState('Profile')
 
+  const temp = 1 //TODO remove this and switch to using userId
+
+  async function getUser() {
+    try {
+      const response = await API.get(`users/2`);
+      console.log(response);
+      console.log(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    //API.get(`users/${`userID`}`).then(result => {
-    API.get(`users/1`).then(result => {
-      //TODO: Pull user data from API
-      console.log(result);
-      console.log(result.data);
-    });
-  }, [userId]);
+    getUser();
+  }, []);
+
 
   const openProfile = useCallback(() => setCard('Profile'), []); //Open the dropdown menu
   const openProjects = useCallback(() => setCard('Projects'), []); //Close dropdown menu
@@ -29,13 +38,13 @@ const UserSettingsPage = (props) => {
   const showCard = () => {//  Function to switch between settings page "tabs" 
     switch(card) {
       case 'Profile':
-        return <ProfileSettingsCard userID='1' /> 
+        return <ProfileSettingsCard userID={temp} /> // TODO Create seperate components for each of these and switch to userId
       case 'Projects':
-        return <ProfileSettingsCard userID='2' />
+        return <ProfileSettingsCard userID={temp} />
       case 'Contacts':
-        return <ProfileSettingsCard userID='3' />
+        return <ProfileSettingsCard userID={temp} />
       default:
-        return <ProfileSettingsCard userID='1' />
+        return <ProfileSettingsCard userID={temp} />
     }
   }
 

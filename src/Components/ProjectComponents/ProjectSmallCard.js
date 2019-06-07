@@ -10,17 +10,25 @@ import { Line } from 'rc-progress';
 
 
 const ProjectSmallCard = (props) => {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUser] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null); //Dropdown menu
   const [blockConfirm, setBlockConfirm] = useState(false) //Block User Dialog
   
+  async function getUser() {
+    try {
+      const response = await API.get(`users/1`);
+      console.log(response);
+      console.log(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    API.get(`users/${`userID`}`).then(result => {
-      //TODO: Pull user data from API
-      console.log(result);
-      console.log(result.data);
-    });
-  }, [userId]);
+    getUser();
+  }, []);
+
 
   const progressAmount = 50 //TODO: pull from backend
 

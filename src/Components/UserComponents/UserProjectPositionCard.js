@@ -9,17 +9,25 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 const UserProjectPositionCard = (props) => {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUser] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null); //Dropdown menu
   const [blockConfirm, setBlockConfirm] = useState(false) //Block User Dialog
   
+  async function getUser() {
+    try {
+      const response = await API.get(`users/1`);
+      console.log(response);
+      console.log(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    API.get(`users/${`userID`}`).then(result => {
-      //TODO: Pull user data from API
-      console.log(result);
-      console.log(result.data);
-    });
-  }, [userId]);
+    getUser();
+  }, []);
+
 
   const openDropdown = useCallback((event) => setAnchorEl(event.currentTarget), []); //Open the dropdown menu
   const closeDropdown = useCallback(() => setAnchorEl(null), []); //Close dropdown menu

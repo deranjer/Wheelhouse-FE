@@ -25,15 +25,22 @@ var profileBGImageStyle = {
 }
 
 const UserProfile = (props) => {
-  const [userID, setUser] = useState(0);
+  const [userId, setUser] = useState(0);
 
+  async function getUser() {
+    try {
+      const response = await API.get(`users/2`);
+      console.log(response);
+      console.log(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    API.get(`users/${userID}`).then(result => {
-      console.log(result);
-      console.log(result.data);
-    });
-  }, [userID]);
+    getUser();
+  }, []);
 
 
   return (
@@ -58,7 +65,7 @@ const UserProfile = (props) => {
         <Grid item xs={2}>{/*  Left Menu/Column */}
           <Grid container spacing={1}>
             <Grid item>           
-              <Typography  variant='h4'>Username</Typography>
+              <Typography  variant='h4'>{userId.username}</Typography>
             </Grid>
             <Grid item>
               <IconButton style={{float: 'right'}}>

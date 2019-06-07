@@ -9,18 +9,25 @@ import ProfileSettingsCard from '../UserComponents/profileSettingsCard';
 
 
 const MessagesPage = (props) => {
-  const [userId, setUserId] = useState(1);
+  const [userId, setUser] = useState(1);
   const [card, setCard] = useState('Profile')
   const [replyBlock, setReplyBlock] = useState(null)
 
+  async function getUser() {
+    try {
+      const response = await API.get(`users/1`);
+      console.log(response);
+      console.log(response.data);
+      setUser(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    //API.get(`users/${`userID`}`).then(result => {
-    API.get(`users/1`).then(result => {
-      //TODO: Pull user data from API
-      console.log(result);
-      console.log(result.data);
-    });
-  }, [userId]);
+    getUser();
+  }, []);
+
 
   const openProfile = useCallback(() => {
     setReplyBlock(false)
