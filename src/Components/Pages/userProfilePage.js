@@ -5,6 +5,7 @@ import {Menu, MenuItem,  Avatar, Typography, Grid, Divider, Chip, Paper, Card, C
 import {IconButton, Button} from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import UserPortfolioCard from '../UserComponents/UserPortfolioCard';
+import ProjectSmallCard from '../ProjectComponents/ProjectSmallCard';
 import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 
 var imageOverLapStyle = {
@@ -76,14 +77,21 @@ const UserProfile = (props) => {
           <Card>
             <CardContent>I am an experienced user with Blender and Substance Painter.  I have a one released game created with Unity.  I also have a lot of experience with UE4 Blueprints, materials and Niagara System.  Looking for a unique game to create.</CardContent>
           </Card>
-          <Typography variant='h4'>Messages</Typography>
 
         </Grid>
         <Grid item xs={6}>{/*  Main Page Content */}
-          <Grid container justify="flex-end">
-            <Button style={{ margin: "4px"}} variant="contained" color="primary">Message</Button>
-            <Button style={{ margin: "4px"}} variant="contained" color="primary">Follow</Button>
+         
+          <Grid container>
+            <Grid item>
+              <Typography variant='h6'>Here is my tagline that is under 240 that shows up on my profilecard</Typography>
+            </Grid>
+            <Grid item>
+              <Button style={{ margin: "4px"}} variant="contained" color="primary">Message</Button>
+              <Button style={{ margin: "4px"}} variant="contained" color="primary">Follow</Button>
+            </Grid> 
           </Grid>
+
+            
           <Grid container justify="flex-start">
             <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>{/*  20 char max for tags */}
             <Chip label="Substance Designerrr" style={{ margin: "4px"}}/>
@@ -116,6 +124,15 @@ const UserProfile = (props) => {
           </Grid>
           <Typography variant='h4' align="center">Projects</Typography>
           <Grid container justify="flex-start" spacing={4}>
+            <Grid item >
+              <ProjectSmallCard />
+            </Grid>
+            <Grid item >
+              <ProjectSmallCard />
+            </Grid>
+            <Grid item >
+              <ProjectSmallCard />
+            </Grid>
           </Grid>
         </Grid>{/* End Main Page Content */}
         

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import {Button, Toolbar, AppBar, Grid, InputBase, Avatar} from '@material-ui/core';
+import {Button, Toolbar, AppBar, Grid, InputBase, Avatar, Badge} from '@material-ui/core';
 import {Menu, MenuItem } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 
 
@@ -17,13 +18,19 @@ const TopNavBar = () => {
   
       <AppBar position="static">
         <Toolbar>
-          <Grid container justify="flex-end">
+          <Grid container justify="flex-end" alignContent="center">
             <Button color="inherit">Browse Users</Button>
             <Button color="inherit">Browse Projects</Button>
-            <SearchIcon />
+            <p>
+              <SearchIcon style={{ fontSize: 30}} />
+            </p>
             <InputBase placeholder="Search…" />
+            <p>
+              <Badge badgeContent={4} color="primary">
+                <NotificationsIcon style={{ fontSize: 30 }} />
+              </Badge>
+            </p>
             <Button style={{borderRadius: 35}} onClick={openDropdown}>
-              
               <Avatar>H</Avatar>
             </Button>{/* TODO: Figure out how to make an avatar directly 'buttonable' */}
             <Menu                       
@@ -34,7 +41,7 @@ const TopNavBar = () => {
               > {/*  TODO: If logged in */}
                 <MenuItem onClick={closeDropdown}>Profile</MenuItem>
                 <MenuItem onClick={closeDropdown}>Messages</MenuItem>
-                <MenuItem onClick={closeDropdown}>Contacts</MenuItem>
+                <MenuItem onClick={closeDropdown}>Following</MenuItem>
               </Menu>
           </Grid>
         </Toolbar>
