@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Nav from './Components/PageComponents/nav';
 import HomePage from './Components/Pages/homepage';
@@ -10,32 +10,54 @@ import SearchPage from './Components/Pages/searchPage';
 import UserSettingsPage from './Components/Pages/userSettingsPage';
 import MessagesPage from './Components/Pages/messagesPage';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from './theme';
+import darkTheme from './darkTheme';
+import lightTheme from './lightTheme';
 import NewProjectPage from './Components/Pages/newProjectPage';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
+// state = {
+//   isThemeLight: true,
+// };
+// changeTheme = () => {
+//   console.log('THEME SHOULD BE CHANGED!!');
+//   this.setState = { isThemeLight: !this.state.isThemeLight };
+// };
+// const { isThemeLight } = this.state;
 
-function App() {
+const App = props => {
+  const [isLightTheme, setIsLightTheme] = useState(true);
+  const [themeIcon, setThemeIcon] = useState('🌑');
+  const changeTheme = useCallback(() => {
+    setIsLightTheme(!isLightTheme);
+    setThemeIcon(isLightTheme ? '🌞' : '🌑');
+  });
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
+      <CssBaseline />
       <Router>
-        <div>    
+        <div>
           <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/userprofile" exact component={UserProfile} />
+            <Route
+              path='/'
+              exact
+              render={props => <HomePage changeTheme={changeTheme} themeIcon={themeIcon} />}
+            />
+            <Route path='/userprofile' exact component={UserProfile} />
             <Route path='/login' exact component={LoginPage} />
-            <Route path="/examples" exact component={ExamplePage} />
-            <Route path="/projectpage" exact component={ProjectProfile} />
-            <Route path="/searchpage" exact component={SearchPage} />
-            <Route path="/usersettings" exact component={UserSettingsPage} />
-            <Route path="/messagespage" exact component={MessagesPage} />
-            <Route path="/newprojectpage" exact component={NewProjectPage} />
+            <Route path='/examples' exact component={ExamplePage} />
+            <Route path='/projectpage' exact component={ProjectProfile} />
+            <Route path='/searchpage' exact component={SearchPage} />
+            <Route path='/usersettings' exact component={UserSettingsPage} />
+            <Route path='/messagespage' exact component={MessagesPage} />
+            <Route path='/newprojectpage' exact component={NewProjectPage} />
           </Switch>
-          <p/>
+          <p />
           <Nav />
-      </div>
+        </div>
       </Router>
     </ThemeProvider>
   );
-}
+};
 
 export default App;
