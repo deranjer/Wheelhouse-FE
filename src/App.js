@@ -1,4 +1,8 @@
 import React from 'react';
+//Date Util Libraries
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
+//
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Nav from './Components/PageComponents/nav';
 import HomePage from './Components/Pages/homepage';
@@ -17,23 +21,25 @@ import NewProjectPage from './Components/Pages/newProjectPage';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <div>    
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/userprofile" exact component={UserProfile} />
-            <Route path='/login' exact component={LoginPage} />
-            <Route path="/examples" exact component={ExamplePage} />
-            <Route path="/projectpage" exact component={ProjectProfile} />
-            <Route path="/searchpage" exact component={SearchPage} />
-            <Route path="/usersettings" exact component={UserSettingsPage} />
-            <Route path="/messagespage" exact component={MessagesPage} />
-            <Route path="/newprojectpage" exact component={NewProjectPage} />
-          </Switch>
-          <p/>
-          <Nav />
-      </div>
-      </Router>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <Router>
+          <div>    
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/userprofile" exact component={UserProfile} />
+              <Route path='/login' exact component={LoginPage} />
+              <Route path="/examples" exact component={ExamplePage} />
+              <Route path="/projectpage" exact component={ProjectProfile} />
+              <Route path="/searchpage" exact component={SearchPage} />
+              <Route path="/usersettings" exact component={UserSettingsPage} />
+              <Route path="/messagespage" exact component={MessagesPage} />
+              <Route path="/newprojectpage" exact component={NewProjectPage} />
+            </Switch>
+            <p/>
+            <Nav />
+        </div>
+        </Router>
+      </MuiPickersUtilsProvider>
     </ThemeProvider>
   );
 }
