@@ -149,7 +149,6 @@ const UserProfile = props => {
               <UserPortfolioCard />
             </Grid>
           </Grid>
-<<<<<<< HEAD
           <Typography variant='h4' align="center">Projects</Typography>
           <Grid container justify="flex-start" spacing={4}>
             <Grid item >
@@ -166,18 +165,6 @@ const UserProfile = props => {
         
         <Grid item xs={2}>{/*  Right side Bottom bar */}
           <Paper style={{height: '100%'}}>Right side Bottom bar</Paper>
-=======
-          <Typography variant='h4' align='center'>
-            Projects
-          </Typography>
-          <Grid container justify='flex-start' spacing={4} />
-        </Grid>
-        {/* End Main Page Content */}
-
-        <Grid item xs={2}>
-          {/*  Right side Bottom bar */}
-          <Paper style={{ height: '100%' }}>Right side Bottom bar</Paper>
->>>>>>> dev-sparkist
         </Grid>
       </Grid>
     </div>

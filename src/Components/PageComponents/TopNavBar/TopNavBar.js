@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Toolbar, AppBar, Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {Menu, MenuItem } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Menu as DropMenu, MenuItem } from '@material-ui/core';
