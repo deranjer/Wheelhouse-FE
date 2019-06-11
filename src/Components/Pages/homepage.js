@@ -11,7 +11,8 @@ const HomePage = props => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         {/*  Top Menu Bar */}
-        <TopNavBar changeTheme={props.changeTheme} themeIcon={props.themeIcon} />
+        {/* <TopNavBar changeTheme={props.changeTheme} themeIcon={props.themeIcon} /> */}
+        {/* shouldn't be here! because we'd have to put in every page. moved to App.js like the "bottom" one */}
       </Grid>
       {/* End Top Menu Bar */}
       <Grid item xs={12}>

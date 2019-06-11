@@ -1,6 +1,46 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+//.MuiInputLabel-outlined.MuiInputLabel-shrink
+
 const lightTheme = createMuiTheme({
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        '&$shrink': {
+          'transform-origin': 'center',
+          transition: 'all ease-in-out 200ms',
+          transform: 'translateY(-50%) scale(0.75)!important',
+          left: 'calc(50% - 37px)', // TODO:: hacky! imporve
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        position: 'relative',
+        '& $notchedOutline': {
+          borderColor: 'rgba(0, 0, 0, 0.23)',
+        },
+        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+          borderColor: '#532d8e',
+          // Reset on touch devices, it doesn't add specificity
+          '@media (hover: none)': {
+            borderColor: 'rgba(0, 0, 0, 0.23)',
+          },
+        },
+        '&$focused $notchedOutline': {
+          borderColor: '#532d8e',
+          borderWidth: 1,
+        },
+      },
+    },
+    MuiFormLabel: {
+      root: {
+        '&$focused': {
+          color: '#532d8e',
+        },
+      },
+    },
+  },
   palette: {
     type: 'dark',
     primary: {

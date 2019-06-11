@@ -17,7 +17,7 @@ const TopNavBar = props => {
           <Button color='inherit'>Browse Projects</Button>
           <SearchIcon />
           <InputBase placeholder='Search…' />
-          <Button style={{ borderRadius: 35, fontSize: '2em' }} onClick={props.changeTheme}>
+          <Button style={{ borderRadius: 35, fontSize: '2em' }} onClick={props.toggleTheme}>
             {props.themeIcon}
           </Button>
           <Button style={{ borderRadius: 35 }} onClick={openDropdown}>
