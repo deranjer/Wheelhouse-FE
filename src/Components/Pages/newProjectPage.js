@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { DatePicker } from "@material-ui/pickers";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import API from '../../api';
 import {Menu, MenuItem,  Avatar, Typography, Grid, AppBar, Toolbar, Paper, InputBase} from "@material-ui/core";
@@ -10,6 +11,7 @@ import TopNavBar from '../PageComponents/TopNavBar/TopNavBar';
 
 
 const NewProjectPage = (props) => {
+  const [selectedDate, handleDateChange] = useState(new Date())
 
   return (
     <Grid container spacing={2}>
@@ -35,8 +37,14 @@ const NewProjectPage = (props) => {
             
             >
               <Form>
+              
               <Typography component="p"><Field type="text" name="projectName" /></Typography>
-              <Typography component="p"> <Field type="date" name="projectStartDate" /> </Typography> 
+              <DatePicker
+                format="MMM DD, YYYY"  
+                disablePast  
+                value={selectedDate} 
+                onChange={handleDateChange} 
+              /> 
               </Form>
             </Formik> 
           </Paper> 
