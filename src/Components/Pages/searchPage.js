@@ -46,16 +46,21 @@ const SearchPage = (props) => {
         <Grid item xs={8}>
             <Paper style={{height: "400px"}}>Search results would be put here</Paper>  
         </Grid>
-        <Grid item xs={2}></Grid>{/* Right Side Padding */}
+        <Grid item xs={2} />
+        {/* Right Side Padding */}
       </Grid>
-      <Grid item xs={12}><Paper style={{height: "100px"}}>This is your footer area</Paper></Grid>{/* Footer */}{/* End Main Page Content */}
-    </Grid>   
+      <Grid item xs={12}>
+        <Paper style={{ height: '100px' }}>This is your footer area</Paper>
+      </Grid>
+      {/* Footer */}
+      {/* End Main Page Content */}
+    </Grid>
   );
-}
+};
 
 SearchPage.propTypes = {
-  userID: PropTypes.string
+  userID: PropTypes.string,
   //TODO: Add More PropTypes
-}
-  
-export default SearchPage
+};
+
+export default SearchPage;
