@@ -29,13 +29,10 @@ const SearchPage = (props) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>{/*  Top Menu Bar */}
-        <TopNavBar />  
-      </Grid>{/* End Top Menu Bar */}
-
-      <Grid item xs={2}></Grid>{/* Left Side Padding */}
+      <Grid item xs={2}>
+      </Grid>{/* Left Side Padding */}
       <Grid item xs={8}>
-        <FilterListIcon style={{paddingRight: '20px'}} />
+        <FilterListIcon />
         <FilterResults />
       </Grid>  
       <Grid item xs={2}></Grid>{/* Left Side Padding */}

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Toolbar, AppBar, Grid, Avatar } from '@material-ui/core';
+import { Button, Toolbar, AppBar, Grid, Avatar, Badge } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -53,6 +53,9 @@ const TopNavBar = props => {
                 <Chat />
               </Link>
             </Button>
+            <Badge badgeContent={4} color="primary">
+              <NotificationsIcon style={{ fontSize: 30 }} />
+            </Badge>
             <Button style={{ borderRadius: 35 }} onClick={openDropdown}>
               <Avatar>H</Avatar>
             </Button>
