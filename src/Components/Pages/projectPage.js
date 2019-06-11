@@ -79,10 +79,15 @@ const ProjectProfile = (props) => {
           </Card>
         </Grid>
         <Grid item xs={6}>{/*  Main Page Content */}
-          <Grid container justify="flex-end">
-            <Button style={{ margin: "4px"}} variant="contained" color="primary">Message</Button>
-            <Button style={{ margin: "4px"}} variant="contained" color="primary">Follow</Button>
-          </Grid>
+          <Grid container>
+              <Grid item>
+                <Typography variant='h6'>Here is a project tagline that is under 240 that shows up on smallcard</Typography>
+              </Grid>
+              <Grid item>
+                <Button style={{ margin: "4px"}} variant="contained" color="primary">Message</Button>
+                <Button style={{ margin: "4px"}} variant="contained" color="primary">Follow</Button>
+              </Grid> 
+            </Grid>
           <Grid container justify="flex-start">
             <Chip label="Racing Game........." style={{ margin: "4px"}}/>{/*  20 char max for tags, 5 max tags for projects */}
             <Chip label="Fighting Game......." style={{ margin: "4px"}}/>
