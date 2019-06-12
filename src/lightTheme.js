@@ -14,35 +14,17 @@ const lightTheme = createMuiTheme({
         },
       },
     },
-    MuiOutlinedInput: {
-      root: {
-        position: 'relative',
-        '& $notchedOutline': {
-          borderColor: 'rgba(0, 0, 0, 0.23)',
-        },
-        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
-          borderColor: '#532d8e',
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            borderColor: 'rgba(0, 0, 0, 0.23)',
-          },
-        },
-        '&$focused $notchedOutline': {
-          borderColor: '#532d8e',
-          borderWidth: 1,
-        },
-      },
-    },
-    MuiFormLabel: {
-      root: {
-        '&$focused': {
-          color: '#532d8e',
-        },
+    // adding spacing actually increases the width causing a super annoying horizontal scrollbar
+    // this should fix it for all containers and still have the spacing *between* the elements
+    MuiGrid: {
+      container: {
+        width: '100%!important',
+        margin: '0!important',
       },
     },
   },
   palette: {
-    type: 'dark',
+    type: 'light',
     primary: {
       main: '#532d8e',
       light: '#7b1fa2',
