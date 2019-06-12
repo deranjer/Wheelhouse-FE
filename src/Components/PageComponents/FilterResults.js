@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import API from '../../api';
-import {Input, NativeSelect, FormControl, FormHelperText} from "@material-ui/core";
+import { Input, NativeSelect, FormControl, FormHelperText } from '@material-ui/core';
 
-
-
-const FilterResults = (props) => {
-
+const FilterResults = props => {
   const [state, setState] = React.useState({
     filterbyType: 'none',
     advancedFilter: 'lookingFor',
@@ -14,7 +11,7 @@ const FilterResults = (props) => {
     sortby: 'popularity',
     currentResults: '',
     currentPage: '',
-  })
+  });
 
   const handleStateChange = name => event => {
     setState({
@@ -40,48 +37,41 @@ const FilterResults = (props) => {
 
   return (
     <React.Fragment>
-      <FormControl style={{paddingRight: '20px'}}>
+      <FormControl style={{ paddingRight: '20px' }}>
         <NativeSelect
           value={state.filterbyType}
           onChange={handleStateChange('filterbyType')}
-          name="filterbyType"
-        >
-          <option value="none"></option>
+          name="filterbyType">
+          <option value="none">Users & Projects</option>
           <option value="users">Users</option>
           <option value="projects">Projects</option>
         </NativeSelect>
         <FormHelperText>Filter by</FormHelperText>
       </FormControl>
-      <FormControl style={{paddingRight: '20px'}}>
+      <FormControl style={{ paddingRight: '20px' }}>
         <NativeSelect
           value={state.advancedFilter}
           onChange={handleStateChange('advancedFilter')}
-          name="advancedFilter"
-        >
+          name="advancedFilter">
           <option value="lookingFor">Looking For Work</option>
           <option value="users">Users</option>
           <option value="projects">Projects</option>
         </NativeSelect>
         <FormHelperText>Advanced Filter</FormHelperText>
       </FormControl>
-      <FormControl style={{paddingRight: '20px'}}>
+      <FormControl style={{ paddingRight: '20px' }}>
         <NativeSelect
           value={state.typeofFilter}
           onChange={handleStateChange('typeofFilter')}
-          name="typeofFilter"
-        >
+          name="typeofFilter">
           <option value="popularity">Video Game</option>
           <option value="ageNew">Application</option>
           <option value="ageOld">Other</option>
         </NativeSelect>
         <FormHelperText>Filter by Type</FormHelperText>
       </FormControl>
-      <FormControl style={{paddingRight: '20px'}}>
-        <NativeSelect
-          value={state.sortby}
-          onChange={handleStateChange('sortby')}
-          name="sortby"
-        >
+      <FormControl style={{ paddingRight: '20px' }}>
+        <NativeSelect value={state.sortby} onChange={handleStateChange('sortby')} name="sortby">
           <option value="popularity">Popularity</option>
           <option value="ageNew">New</option>
           <option value="ageOld">Old</option>
@@ -90,11 +80,11 @@ const FilterResults = (props) => {
       </FormControl>
     </React.Fragment>
   );
-}
+};
 
 FilterResults.propTypes = {
-  userID: PropTypes.string
+  userID: PropTypes.string,
   //TODO: Add More PropTypes
-}
-  
-export default FilterResults
+};
+
+export default FilterResults;

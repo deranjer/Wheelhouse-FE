@@ -26,7 +26,7 @@ const TopNavBar = props => {
   const classes = useStyles();
 
   return (
-    <AppBar position='sticky' style={{ marginBottom: '1%' }}>
+    <AppBar position="sticky" style={{ marginBottom: '1%' }}>
       <Toolbar>
         <Grid container>
           {props.wideScreen ? (
@@ -49,20 +49,22 @@ const TopNavBar = props => {
               {props.themeIcon}
             </Button>
             <Button style={{ borderRadius: 35, fontSize: '2em', color: 'white' }}>
-              <Link to='/messages' className={classes.maLink}>
+              <Link to="/messages" className={classes.maLink}>
                 <Chat />
               </Link>
             </Button>
-            <Badge badgeContent={4} color="primary">
-              <NotificationsIcon style={{ fontSize: 30 }} />
-            </Badge>
+            <Button style={{ borderRadius: 35, fontSize: '2em', color: 'white' }}>
+              <Badge badgeContent={4} color="primary">
+                <NotificationsIcon style={{ fontSize: 30 }} />
+              </Badge>
+            </Button>
             <Button style={{ borderRadius: 35 }} onClick={openDropdown}>
               <Avatar>H</Avatar>
             </Button>
           </Grid>
           {/* TODO: Figure out how to make an avatar directly 'buttonable' */}
           <DropMenu
-            id='simple-menu'
+            id="simple-menu"
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={closeDropdown}>
