@@ -1,9 +1,10 @@
 import React from 'react';
-import PropTyes from 'prop-types';
 import UserSmallCard from '../UserComponents/UserProfileSmallCard';
 import UserPortfolioCard from '../UserComponents/UserPortfolioCard';
 import ProjectSmallCard from '../ProjectComponents/ProjectSmallCard';
 import StatusUpdate from '../PageComponents/statusUpdate';
+import UserProjectPositionCard from '../UserComponents/UserProjectPositionCard';
+import UserProjectPositionMiniCard from '../UserComponents/UserProjectPositionMiniCard';
 import TestComp from '../testComp';
 import {Grid} from "@material-ui/core";
 
@@ -24,6 +25,14 @@ const ExamplePage = () => (
       StatusUpdate:
       <Grid container justify="center">
         <StatusUpdate />
+      </Grid>
+      UserProjectPositionCard:
+      <Grid container justify="center">
+        <UserProjectPositionCard />
+      </Grid>
+      UserProjectPositionMiniCard:
+      <Grid container justify="center">
+        <UserProjectPositionMiniCard />
       </Grid>
       TestComp:
       <Grid container justify="center">
