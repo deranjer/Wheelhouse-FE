@@ -23,7 +23,7 @@ import {
 } from '@material-ui/core';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Divider from '@material-ui/core/Divider';
-import FilterResults from '../PageComponents/filterResults';
+import FilterResults from '../PageComponents/FilterResults';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
 
