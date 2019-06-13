@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import API from '../../api';
+import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import API from "../../api";
 import {
   Menu,
   MenuItem,
@@ -10,35 +10,35 @@ import {
   Grid,
   TextField,
   Paper,
-  Hidden,
-} from '@material-ui/core';
+  Hidden
+} from "@material-ui/core";
 //import { makeStyles } from '@material-ui/styles';
 
-import 'react-chat-elements/dist/main.css';
-import { MessageList, Input, Button } from 'react-chat-elements';
+import "react-chat-elements/dist/main.css";
+import { MessageList, Input, Button } from "react-chat-elements";
 
-import getMessagesPageClasses from '../../Styles/messagesPageStyles';
-import api from '../../api';
+import getMessagesPageClasses from "../../Styles/messagesPageStyles";
+import api from "../../api";
 
 const MessagesPage = props => {
-  const userId = localStorage.getItem('userId') || '1';
+  const userId = localStorage.getItem("userId") || "1";
   const [user, setUser] = useState(null);
   const [latestContacts, setLatestContacts] = useState([]);
   const [messages, setMessages] = useState([
     {
       id: 1,
-      position: 'left',
-      type: 'text',
-      text: '[something interesting], do you have time?',
-      date: new Date(),
+      position: "left",
+      type: "text",
+      text: "[something interesting], do you have time?",
+      date: new Date()
     },
     {
       id: 2,
-      position: 'right',
-      type: 'text',
-      text: 'Hello! sounds interesting, more details?',
-      date: new Date(),
-    },
+      position: "right",
+      type: "text",
+      text: "Hello! sounds interesting, more details?",
+      date: new Date()
+    }
   ]);
 
   var refInput = null; // temp, until a solution comes
@@ -50,7 +50,7 @@ const MessagesPage = props => {
       console.log(response);
       console.log(response.data);
       setUser(response.data);
-      localStorage.setItem('userId', response.data.id);
+      localStorage.setItem("userId", response.data.id);
     } catch (error) {
       console.error(error);
     }
@@ -65,43 +65,45 @@ const MessagesPage = props => {
       var users = [
         {
           id: 2,
-          full_name: 'User 2',
-          username: 'monitor2',
-          email: 'deliverables0@faker.net',
-          password: 'd2800ce0-8f0b-4068-abc1-c1ba284cad2e',
+          full_name: "User 2",
+          username: "monitor2",
+          email: "deliverables0@faker.net",
+          password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
           profile_photo_url: null,
           header_photo_url: null,
-          work_status: 'Employed',
+          work_status: "Employed",
           bio: null,
-          permissions_id: null,
+          permissions_id: null
         },
         {
           id: 3,
-          full_name: 'User 3',
-          username: 'monitor3',
-          email: 'deliverables0@faker.net',
-          password: 'd2800ce0-8f0b-4068-abc1-c1ba284cad2e',
+          full_name: "User 3",
+          username: "monitor3",
+          email: "deliverables0@faker.net",
+          password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
           profile_photo_url: null,
           header_photo_url: null,
-          work_status: 'Employed',
+          work_status: "Employed",
           bio: null,
-          permissions_id: null,
+          permissions_id: null
         },
         {
           id: 4,
-          full_name: 'User 4',
-          username: 'monitor4',
-          email: 'deliverables0@faker.net',
-          password: 'd2800ce0-8f0b-4068-abc1-c1ba284cad2e',
+          full_name: "User 4",
+          username: "monitor4",
+          email: "deliverables0@faker.net",
+          password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
           profile_photo_url: null,
           header_photo_url: null,
-          work_status: 'Employed',
+          work_status: "Employed",
           bio: null,
-          permissions_id: null,
-        },
+          permissions_id: null
+        }
       ];
       var usersUI = [];
-      users.forEach(u => usersUI.push(<MenuItem key={u.id}>{u.full_name}</MenuItem>));
+      users.forEach(u =>
+        usersUI.push(<MenuItem key={u.id}>{u.full_name}</MenuItem>)
+      );
       setLatestContacts(usersUI);
     } catch (error) {
       console.error(error);
@@ -110,7 +112,7 @@ const MessagesPage = props => {
 
   const sendMessage = () => {
     var msg = refInput.state.value.trim();
-    if (msg === '') {
+    if (msg === "") {
       return; // don't send ...
     }
     // [insert API call here]
@@ -118,13 +120,13 @@ const MessagesPage = props => {
       ...messages,
       {
         id: messages[messages.length - 1].id + 1,
-        position: 'right', // because sender
-        type: 'text',
+        position: "right", // because sender
+        type: "text",
         text: msg,
-        date: new Date(),
-      },
+        date: new Date()
+      }
     ]); // push the new message
-    refInput.state.value = '';
+    refInput.state.value = "";
   };
 
   // useEffect(() => {
@@ -144,52 +146,51 @@ const MessagesPage = props => {
   const classes = getMessagesPageClasses(props.appTheme);
 
   return (
-    <Grid container spacing={2}>
-      <Hidden mdDown>
-        <Grid item lg={3}>
-          <Typography variant="h6">Most Recent Contacts</Typography>
-          {latestContacts}
-        </Grid>
-      </Hidden>
-      <Grid item xs={12} lg={6} overflow="hidden">
-        <Paper>
-          <div>
-            <MessageList
-              className={`message-list ${classes.ChatClasses.root}`}
-              lockable={false}
-              dataSource={messages}
-              toBottomHeight="100%"
+    <React.Fragment>
+      <Grid container spacing={2} justify="center">
+        <Hidden mdDown>
+          <Grid item lg={2} xl={2}>
+            <Typography variant="h6">Most Recent Contacts</Typography>
+            {latestContacts}
+          </Grid>
+        </Hidden>
+        <Grid item xs={12} lg={6} xl={6} overflow="hidden">
+          <Paper>
+            <div>
+              <MessageList
+                className={`message-list ${classes.ChatClasses.root}`}
+                lockable={false}
+                dataSource={messages}
+                toBottomHeight="100%"
+              />
+            </div>
+            <Input
+              className={classes.InputClasses.root}
+              placeholder="Type here..."
+              multiline={true}
+              ref={el => (refInput = el)}
+              onKeyPress={e => {
+                if (e.shiftKey && e.charCode === 13) {
+                  console.log("new line");
+                  return true;
+                } else if (!e.shiftKey && e.charCode === 13) {
+                  console.log("send");
+                  sendMessage();
+                  e.preventDefault();
+                  return false;
+                }
+              }}
+              rightButtons={<Button text="Send" onClick={sendMessage} />}
             />
-          </div>
-          <Input
-            className={classes.InputClasses.root}
-            placeholder="Type here..."
-            multiline={true}
-            ref={el => (refInput = el)}
-            onKeyPress={e => {
-              if (e.shiftKey && e.charCode === 13) {
-                console.log('new line');
-                return true;
-              } else if (!e.shiftKey && e.charCode === 13) {
-                console.log('send');
-                sendMessage();
-                e.preventDefault();
-                return false;
-              }
-            }}
-            rightButtons={<Button text="Send" onClick={sendMessage} />}
-          />
-        </Paper>
+          </Paper>
+        </Grid>
       </Grid>
-      <Hidden mdDown>
-        <Grid item lg={3} />
-      </Hidden>
-    </Grid>
+    </React.Fragment>
   );
 };
 
 MessagesPage.propTypes = {
-  userID: PropTypes.string,
+  userID: PropTypes.string
   //TODO: Add More PropTypes
 };
 

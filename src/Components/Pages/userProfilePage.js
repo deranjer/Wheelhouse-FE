@@ -18,7 +18,6 @@ import { IconButton, Button } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import UserPortfolioCard from "../UserComponents/UserPortfolioCard";
 import ProjectSmallCard from "../ProjectComponents/ProjectSmallCard";
-import TopNavBar from "../PageComponents/TopNavBar/TopNavBar";
 
 var imageOverLapStyle = {
   position: "absolute",
@@ -56,13 +55,9 @@ const UserProfile = props => {
   }, []);
 
   return (
-    <div>
-      <Grid container spacing={2}>
-        <Grid item xs={2}>
-          {/*  Left Side Top Bar */}
-          <Paper style={{ height: "100%" }}>Left Side Top Bar</Paper>
-        </Grid>
-        <Grid item xs={8}>
+    <React.Fragment>
+      <Grid container justify="center">
+        <Grid item xs={12} lg={8} xl={8}>
           {/*  Header Image */}
           <img
             style={profileBGImageStyle}
@@ -75,46 +70,25 @@ const UserProfile = props => {
             />
           </div>
         </Grid>
-        <Grid item xs={2}>
-          {/*  Right Side Top Bar */}
-          <Paper style={{ height: "100%" }}>Right Side Top Bar</Paper>
-        </Grid>
-        <Grid item xs={2}>
-          {/*  Left Side Bottom Bar */}
-          <Paper style={{ height: "100%" }}>Left Side Bottom Bar</Paper>
-        </Grid>
-        <Grid item xs={2}>
-          {/*  Left Menu/Column */}
-          <Grid container spacing={1}>
-            <Grid item>
+        <Grid container justify="center" alignContent="space-around">
+          <Grid item xs={2} lg={2} xl={2}>
+            <Grid container>
               <Typography variant="h4">{userId.username}</Typography>
-            </Grid>
-            <Grid item>
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
+              <Grid item>
+                <IconButton style={{ float: "right" }}>
+                  <MoreVertIcon />
+                </IconButton>
+              </Grid>
             </Grid>
           </Grid>
-          <Card>
-            <CardContent>
-              I am an experienced user with Blender and Substance Painter. I
-              have a one released game created with Unity. I also have a lot of
-              experience with UE4 Blueprints, materials and Niagara System.
-              Looking for a unique game to create.
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          {/*  Main Page Content */}
-
-          <Grid container>
-            <Grid item>
-              <Typography variant="h6">
-                Here is my tagline that is under 240 that shows up on my
-                profilecard
-              </Typography>
-            </Grid>
-            <Grid item>
+          <Grid item xs={6} lg={4} xl={4}>
+            <Typography variant="h6">
+              Here is my tagline that is under 240 that shows up on my
+              profilecard
+            </Typography>
+          </Grid>
+          <Grid item xs={4} lg={2} xl={2}>
+            <Grid container justify="flex-end">
               <Button
                 style={{ margin: "4px" }}
                 variant="contained"
@@ -131,21 +105,32 @@ const UserProfile = props => {
               </Button>
             </Grid>
           </Grid>
-
-          <Grid container justify="flex-start">
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-            {/*  20 char max for tags */}
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-            <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
-          </Grid>
+        </Grid>
+      </Grid>
+      <Grid container justify="center" spacing={1}>
+        <Grid item xs={6} lg={2} xl={2}>
+          <Card>
+            <CardContent>
+              I am an experienced user with Blender and Substance Painter. I
+              have a one released game created with Unity. I also have a lot of
+              experience with UE4 Blueprints, materials and Niagara System.
+              Looking for a unique game to create.
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={6} lg={6} xl={6}>
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
+          {/*  20 char max for tags */}
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
+          <Chip label="Substance Designerrr" style={{ margin: "4px" }} />
           <Typography variant="h4" align="center">
             Portfolio
           </Typography>
-          <Grid container justify="flex-start" spacing={4}>
+          <Grid container spacing={1} justify="flex-start">
             <Grid item>
               <UserPortfolioCard />
             </Grid>
@@ -168,7 +153,7 @@ const UserProfile = props => {
           <Typography variant="h4" align="center">
             Projects
           </Typography>
-          <Grid container justify="flex-start" spacing={4}>
+          <Grid container spacing={1} justify="flex-start">
             <Grid item>
               <ProjectSmallCard />
             </Grid>
@@ -180,14 +165,8 @@ const UserProfile = props => {
             </Grid>
           </Grid>
         </Grid>
-        {/* End Main Page Content */}
-
-        <Grid item xs={2}>
-          {/*  Right side Bottom bar */}
-          <Paper style={{ height: "100%" }}>Right side Bottom bar</Paper>
-        </Grid>
       </Grid>
-    </div>
+    </React.Fragment>
   );
 };
 

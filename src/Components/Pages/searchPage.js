@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import API from '../../api';
+import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import API from "../../api";
 import {
   Menu,
   MenuItem,
@@ -10,8 +10,8 @@ import {
   AppBar,
   Toolbar,
   Paper,
-  InputBase,
-} from '@material-ui/core';
+  InputBase
+} from "@material-ui/core";
 import {
   IconButton,
   Button,
@@ -19,26 +19,26 @@ import {
   Input,
   NativeSelect,
   FormControl,
-  FormHelperText,
-} from '@material-ui/core';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import { makeStyles } from '@material-ui/core/styles';
+  FormHelperText
+} from "@material-ui/core";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import { makeStyles } from "@material-ui/core/styles";
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const SearchPage = props => {
   const [searchResults, setSearchResults] = useState(0);
   const [areFiltersPresent, setAreFiltersPresent] = useState(false);
   const [showEmpStatus, setShowEmpStatus] = useState(true);
   const [showProjStatus, setShowProjStatus] = useState(false);
-  const [filterByVal, setFilterByVal] = useState('users');
-  const [empStatusVal, setEmpStatusVal] = useState('lookingForWork');
-  const [projPayVal, setProjPayVal] = useState('revShare');
+  const [filterByVal, setFilterByVal] = useState("users");
+  const [empStatusVal, setEmpStatusVal] = useState("lookingForWork");
+  const [projPayVal, setProjPayVal] = useState("revShare");
 
   async function getResults() {
     try {
@@ -69,11 +69,11 @@ const SearchPage = props => {
     setShowProjStatus(false);
 
     switch (e.target.value) {
-      case 'users':
+      case "users":
         setShowEmpStatus(true);
         setShowProjStatus(false);
         break;
-      case 'projects':
+      case "projects":
         setShowEmpStatus(false);
         setShowProjStatus(true);
         break;
@@ -88,19 +88,19 @@ const SearchPage = props => {
 
   const useStyles = makeStyles(theme => ({
     root: {
-      display: 'flex',
+      display: "flex"
     },
     formControl: {
-      margin: theme.spacing(3),
+      margin: theme.spacing(3)
     },
     group: {
-      margin: theme.spacing(1, 0),
-    },
+      margin: theme.spacing(1, 0)
+    }
   }));
   const classes = useStyles();
 
   return (
-    <>
+    <React.Fragment>
       <Drawer anchor="right" open={areFiltersPresent} onClose={toggleDrawer}>
         <div style={{ width: 270 }} role="presentation">
           <div className={classes.root}>
@@ -111,10 +111,23 @@ const SearchPage = props => {
                 name="firstLayer"
                 className={classes.group}
                 value={filterByVal}
-                onChange={filterByChange}>
-                <FormControlLabel value="users" control={<Radio />} label="Users" />
-                <FormControlLabel value="projects" control={<Radio />} label="Projects" />
-                <FormControlLabel value="none" control={<Radio />} label="Both" />
+                onChange={filterByChange}
+              >
+                <FormControlLabel
+                  value="users"
+                  control={<Radio />}
+                  label="Users"
+                />
+                <FormControlLabel
+                  value="projects"
+                  control={<Radio />}
+                  label="Projects"
+                />
+                <FormControlLabel
+                  value="none"
+                  control={<Radio />}
+                  label="Both"
+                />
               </RadioGroup>
             </FormControl>
           </div>
@@ -122,20 +135,28 @@ const SearchPage = props => {
           {showEmpStatus ? (
             <>
               <div className={classes.root}>
-                <FormControl component="fieldset" className={classes.formControl}>
+                <FormControl
+                  component="fieldset"
+                  className={classes.formControl}
+                >
                   <FormLabel component="legend">Employment Status</FormLabel>
                   <RadioGroup
                     aria-label="Employment Status"
                     name="employmentStatus"
                     value={empStatusVal}
                     onChange={empStatusChange}
-                    className={classes.group}>
+                    className={classes.group}
+                  >
                     <FormControlLabel
                       value="lookingForWork"
                       control={<Radio />}
                       label="Looking For Work"
                     />
-                    <FormControlLabel value="employed" control={<Radio />} label="Employed" />
+                    <FormControlLabel
+                      value="employed"
+                      control={<Radio />}
+                      label="Employed"
+                    />
                   </RadioGroup>
                 </FormControl>
               </div>
@@ -145,16 +166,28 @@ const SearchPage = props => {
             <>
               <Divider />
               <div className={classes.root}>
-                <FormControl component="fieldset" className={classes.formControl}>
+                <FormControl
+                  component="fieldset"
+                  className={classes.formControl}
+                >
                   <FormLabel component="legend">Project Payment</FormLabel>
                   <RadioGroup
                     aria-label="Project Payment"
                     name="firstLayer"
                     value={projPayVal}
                     onChange={projPayChange}
-                    className={classes.group}>
-                    <FormControlLabel value="revShare" control={<Radio />} label="Rev-Share" />
-                    <FormControlLabel value="paid" control={<Radio />} label="Paid" />
+                    className={classes.group}
+                  >
+                    <FormControlLabel
+                      value="revShare"
+                      control={<Radio />}
+                      label="Rev-Share"
+                    />
+                    <FormControlLabel
+                      value="paid"
+                      control={<Radio />}
+                      label="Paid"
+                    />
                   </RadioGroup>
                 </FormControl>
               </div>
@@ -162,40 +195,27 @@ const SearchPage = props => {
           ) : null}
         </div>
       </Drawer>
-      <Grid container spacing={2}>
-        <Grid item xs={2} />
-        {/* Left Side Padding */}
-        <Grid item xs={8}>
+      <Grid container justify="center">
+        <Grid item xs={12} lg={8} xl={8}>
           <Button onClick={toggleDrawer}>
             <FilterListIcon />
           </Button>
         </Grid>
-        <Grid item xs={2} />
-        {/* Left Side Padding */}
-        <Grid container justify="center">
-          {/* Main Page Content */}
+      </Grid>
+      <Grid container justify="center">
+        <Grid item xs={12} lg={8} xl={8}>
+          <Paper style={{ height: "400px" }}>
+            Search results would be put here
+          </Paper>
         </Grid>
-        <Grid container justify="center">
-          <Grid item xs={2} />
-          {/* Left Side Padding */}
-          <Grid item xs={8}>
-            <Paper style={{ height: '400px' }}>Search results would be put here</Paper>
-          </Grid>
-          <Grid item xs={2} />
-          {/* Right Side Padding */}
-        </Grid>
-        <Grid item xs={12}>
-          <Paper style={{ height: '100px' }}>This is your footer area</Paper>
-        </Grid>
-        {/* Footer */}
         {/* End Main Page Content */}
       </Grid>
-    </>
+    </React.Fragment>
   );
 };
 
 SearchPage.propTypes = {
-  userID: PropTypes.string,
+  userID: PropTypes.string
   //TODO: Add More PropTypes
 };
 

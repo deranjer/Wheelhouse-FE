@@ -52,78 +52,73 @@ const ProjectSmallCard = (props) => {
   );
   
   return (
-    <Grid item style={{ maxWidth: "400px", maxHeight: "280px"}}>
-        <Card style={{ height: "280px"}}>
-            {/* <div style={{position: "absolute", backgroundImage: `url("/images/artstation-logo.png")`,  opacity: ".2", height: '280px', width: '400px'}} /> */}
-            <CardHeader
-            title="TowerSprint"
-            subheader="Tower Sprint is a 4 person race game1111" //NOTE: 40 Char limit for subheader for project card
-            avatar={<Avatar aria-label="Recipe">T</Avatar>}
-            action={
-                <React.Fragment>
-                <IconButton onClick={openDropdown}>
-                    <MoreVertIcon />                    
-                </IconButton>
-                <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={closeDropdown}
-                >
-                    <MenuItem onClick={closeDropdown}>Follow</MenuItem>
-                    <MenuItem onClick={closeDropdown}>Message</MenuItem>
-                    <MenuItem onClick={blockConfirmOpen}>Block</MenuItem>
-                </Menu>
-                <Dialog
-                    //fullScreen={fullScreen}
-                    open={blockConfirm}
-                    onClose={blockConfirmClose}
-                    aria-labelledby="blockConfirm"
-                >
-                    <DialogTitle id="blockConfirm">{"Are you sure you want to block this user?"}</DialogTitle>
-                    <DialogActions>
-                    <Button onClick={blockConfirmSend} color="secondary">
-                        Agree
-                    </Button>
-                    <Button onClick={blockConfirmClose} color="primary">
-                        Cancel
-                    </Button>
-                    </DialogActions>
-                </Dialog>
-                </React.Fragment>
-            }             
-            />
-            <CardMedia
-              style={{height: "150px", width: "100%"}}
-              image="/images/GameBanner.jpg"
-              title="ProjectName"
-              >
-            </CardMedia>
-            <CardContent>
-              <Grid container justify="flex-start">
-                <Grid item xs={3}>
-                  <Tooltip title="Open Positions">
-                    <Avatar aria-label="OpenSpots">4</Avatar>
-                  </Tooltip>
-                </Grid>
-                <Tooltip title="Project Category">
-                  <Grid item xs={5}>
-                    <Typography variant="h6" align="center">Video Game</Typography>    
-                  </Grid>
-                </Tooltip>
-                <Tooltip title="Project Progress">
-                  <Grid item xs={4} style={{float: "right"}}>
-                      <Typography align="center">Progress</Typography>
-                      <Line percent="100" strokeWidth="5" strokeColor="#0b2c60" />
-                  </Grid>
-                </Tooltip>
-                
+    <Card style={{ height: "320px", width: "400px"}}>
+        {/* <div style={{position: "absolute", backgroundImage: `url("/images/artstation-logo.png")`,  opacity: ".2", height: '280px', width: '400px'}} /> */}
+        <CardHeader
+        title="TowerSprint"
+        subheader="Tower Sprint is a 4 person race game1111" //NOTE: 40 Char limit for subheader for project card
+        avatar={<Avatar aria-label="Recipe">T</Avatar>}
+        action={
+            <React.Fragment>
+            <IconButton onClick={openDropdown}>
+                <MoreVertIcon />                    
+            </IconButton>
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={closeDropdown}
+            >
+                <MenuItem onClick={closeDropdown}>Follow</MenuItem>
+                <MenuItem onClick={closeDropdown}>Message</MenuItem>
+                <MenuItem onClick={blockConfirmOpen}>Block</MenuItem>
+            </Menu>
+            <Dialog
+                //fullScreen={fullScreen}
+                open={blockConfirm}
+                onClose={blockConfirmClose}
+                aria-labelledby="blockConfirm"
+            >
+                <DialogTitle id="blockConfirm">{"Are you sure you want to block this user?"}</DialogTitle>
+                <DialogActions>
+                <Button onClick={blockConfirmSend} color="secondary">
+                    Agree
+                </Button>
+                <Button onClick={blockConfirmClose} color="primary">
+                    Cancel
+                </Button>
+                </DialogActions>
+            </Dialog>
+            </React.Fragment>
+        }             
+        />
+        <CardMedia
+          style={{height: "150px", width: "100%"}}
+          image="/images/GameBanner.jpg"
+          title="ProjectName"
+          >
+        </CardMedia>
+        <CardContent>
+          <Grid container justify="flex-start">
+            <Grid item xs={3}>
+              <Tooltip title="Open Positions">
+                <Avatar aria-label="OpenSpots">4</Avatar>
+              </Tooltip>
+            </Grid>
+            <Tooltip title="Project Category">
+              <Grid item xs={5}>
+                <Typography variant="h6" align="center">Video Game</Typography>    
               </Grid>
-
-              
-            </CardContent> 
-        </Card>
-    </Grid>   
+            </Tooltip>
+            <Tooltip title="Project Progress">
+              <Grid item xs={4} style={{float: "right"}}>
+                  <Typography align="center">Progress</Typography>
+                  <Line percent="100" strokeWidth="5" strokeColor="#0b2c60" />
+              </Grid>
+            </Tooltip>
+          </Grid>
+        </CardContent> 
+    </Card>  
   );
 }
 

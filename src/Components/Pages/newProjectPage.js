@@ -21,46 +21,30 @@ const NewProjectPage = props => {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} />
-      {/* Search filter options here */}
-      <Grid container justify="center">
-        {/* Main Page Content */}
+    <Grid container spacing={2} justify="center">
+      <Grid item xs={6} lg={2} xl={2}>
+        <Paper style={{ height: "400px" }}>
+          <Typography component="p">Project Name: </Typography>
+          <Typography component="p">Project Start Date: </Typography>
+        </Paper>
       </Grid>
-      <Grid container justify="center">
-        <Grid item xs={2} />
-        {/* Left Side Padding */}
-        <Grid item xs={2}>
-          <Paper style={{ height: "400px" }}>
-            <Typography component="p">Project Name: </Typography>
-            <Typography component="p">Project Start Date: </Typography>
-          </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper style={{ height: "400px" }}>
-            <Formik>
-              <Form>
-                <Typography component="p">
-                  <Field type="text" name="projectName" />
-                </Typography>
-                <DatePicker
-                  format="MMM DD, YYYY"
-                  disablePast
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
-              </Form>
-            </Formik>
-          </Paper>
-        </Grid>
-        <Grid item xs={2} />
-        {/* Right Side Padding */}
+      <Grid item xs={6} lg={6} xl={6}>
+        <Paper style={{ height: "400px" }}>
+          <Formik>
+            <Form>
+              <Typography component="p">
+                <Field type="text" name="projectName" />
+              </Typography>
+              <DatePicker
+                format="MMM DD, YYYY"
+                disablePast
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            </Form>
+          </Formik>
+        </Paper>
       </Grid>
-      <Grid item xs={12}>
-        <Paper style={{ height: "100px" }}>This is your footer area</Paper>
-      </Grid>
-      {/* Footer */}
-      {/* End Main Page Content */}
     </Grid>
   );
 };
