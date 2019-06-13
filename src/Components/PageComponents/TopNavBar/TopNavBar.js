@@ -2,10 +2,8 @@ import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Toolbar, AppBar, Grid, Avatar, Badge } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { Menu as DropMenu, MenuItem } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Menu as DropMenu, MenuItem, Hidden } from '@material-ui/core';
 import Chat from '@material-ui/icons/Chat';
 import Menu from '@material-ui/icons/Menu';
 // import SearchBar from '../searchBar';
@@ -29,27 +27,26 @@ const TopNavBar = props => {
     <AppBar position="sticky" style={{ marginBottom: '1%' }}>
       <Toolbar>
         <Grid container>
-          {props.wideScreen ? (
-            Object.keys(props.navLinks).map(k => (
-              <Button>
+          <Hidden xsDown>
+            {Object.keys(props.navLinks).map(k => (
+              <Button key={k}>
                 <Link to={props.navLinks[k]} className={classes.maLink}>
                   {k}
                 </Link>
               </Button>
-            ))
-          ) : (
+            ))}
+          </Hidden>
+          <Hidden mdUp>
             <Button onClick={props.toggleDrawer} style={{ marginLeft: -24, color: '#fff' }}>
               <Menu />
             </Button>
-          )}
-          {/* <SearchBar /> */}
-          {/* component should be useable but doesn't make sense to put search here */}
+          </Hidden>
           <Grid style={{ marginLeft: 'auto' }}>
             <Button style={{ borderRadius: 35, fontSize: '2em' }} onClick={props.toggleTheme}>
               {props.themeIcon}
             </Button>
             <Button style={{ borderRadius: 35, fontSize: '2em', color: 'white' }}>
-              <Link to="/messages" className={classes.maLink}>
+              <Link to="/messagespage" className={classes.maLink}>
                 <Chat />
               </Link>
             </Button>

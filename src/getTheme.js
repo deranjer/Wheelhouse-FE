@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 //.MuiInputLabel-outlined.MuiInputLabel-shrink
 
 function getTheme(theme) {
-  console.log(theme);
+  const palette = theme.paletteType || 'light';
   return createMuiTheme({
     overrides: {
       MuiInputLabel: {
@@ -24,9 +24,14 @@ function getTheme(theme) {
           margin: '0!important',
         },
       },
+      MuiPaper: {
+        root: {
+          padding: 10,
+        },
+      },
     },
     palette: {
-      type: theme.paletteType,
+      type: palette,
       primary: {
         main: '#532d8e',
         light: '#7b1fa2',
@@ -62,14 +67,14 @@ function getTheme(theme) {
         dark: '#BF0E08',
       },
       text: {
-        primary: theme.paletteType === 'light' ? '#12161B' : '#f8fafc',
-        secondary: theme.paletteType === 'light' ? '#66788A' : '#cdcdcd',
-        disabled: theme.paletteType === 'light' ? '#A6B1BB' : '#969696',
+        primary: palette === 'light' ? '#12161B' : '#f8fafc',
+        secondary: palette === 'light' ? '#66788A' : '#cdcdcd',
+        disabled: palette === 'light' ? '#A6B1BB' : '#969696',
       },
       background: {
-        default: theme.paletteType === 'light' ? '#f8fafc' : '#242424',
-        dark: theme.paletteType === 'light' ? '#172b4d' : '#121212',
-        paper: theme.paletteType === 'light' ? '#fff' : '#000',
+        default: palette === 'light' ? '#f8fafc' : '#242424',
+        dark: palette === 'light' ? '#e6e8ea' : '#121212',
+        paper: palette === 'light' ? '#fff' : '#000',
       },
       border: '#DFE3E8',
       divider: '#DFE3E8',

@@ -5,7 +5,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Grid, Card, Typography, Button } from '@material-ui/core';
+import { Grid, Card, Typography, Button, Hidden } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
 import { TextField } from 'formik-material-ui';
 import {
@@ -20,7 +20,7 @@ import {
 const LoginPage = props => {
   function TabContainer({ children, dir }) {
     return (
-      <Typography component='div' dir={dir} style={{ padding: 8 * 2 }}>
+      <Typography component="div" dir={dir} style={{ padding: 8 * 2 }}>
         {children}
       </Typography>
     );
@@ -54,17 +54,19 @@ const LoginPage = props => {
   // can surely be better ...
   return (
     <Grid container>
-      <Grid item xs={0} md={3} align='center' />
-      <Grid item xs={12} md={6} align='center' className={classes.root}>
-        <AppBar position='static' color='default'>
+      <Hidden xsDown>
+        <Grid item md={3} align="center" />
+      </Hidden>
+      <Grid item xs={12} md={6} align="center" className={classes.root}>
+        <AppBar position="static" color="default">
           <Tabs
             value={value}
             onChange={handleChange}
-            indicatorColor='primary'
-            textColor='primary'
-            variant='fullWidth'>
-            <Tab label='Login' />
-            <Tab label='Register' />
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth">
+            <Tab label="Login" />
+            <Tab label="Register" />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -74,8 +76,10 @@ const LoginPage = props => {
           <TabContainer dir={theme.direction}>
             <div>
               <Grid container spacing={2}>
-                <Grid item xs={0} md={1} lg={2} align='center' />
-                <Grid item xs={12} md={10} lg={8} align='center'>
+                <Hidden xsDown>
+                  <Grid item md={1} lg={2} align="center" />
+                </Hidden>
+                <Grid item xs={12} md={10} lg={8} align="center">
                   <Card>
                     {/* <Typography variant='h6'>Login to Wheelhouse</Typography> */}
                     <Formik
@@ -90,31 +94,31 @@ const LoginPage = props => {
                       {({ isSubmitting }) => (
                         <Form style={{ display: 'flex', flexWrap: 'wrap' }}>
                           <Field
-                            name='username'
-                            label='Username'
-                            type='text'
+                            name="username"
+                            label="Username"
+                            type="text"
                             component={TextField}
-                            margin='normal'
+                            margin="normal"
                             required={true}
-                            variant='outlined'
-                            autoComplete='username'
+                            variant="outlined"
+                            autoComplete="username"
                             fullWidth
                           />
                           <Field
-                            name='password'
-                            label='Password'
-                            type='password'
+                            name="password"
+                            label="Password"
+                            type="password"
                             component={TextField}
-                            margin='normal'
+                            margin="normal"
                             required={true}
-                            variant='outlined'
-                            autoComplete='current-password'
+                            variant="outlined"
+                            autoComplete="current-password"
                             fullWidth
                           />
                           <Button
-                            variant='contained'
-                            type='submit'
-                            color='primary'
+                            variant="contained"
+                            type="submit"
+                            color="primary"
                             disabled={isSubmitting}
                             style={{ marginTop: '8px', height: '50px' }}
                             fullWidth>
@@ -131,15 +135,19 @@ const LoginPage = props => {
                     </Formik>
                   </Card>
                 </Grid>
-                <Grid item xs={0} md={1} lg={2} align='center' />
+                <Hidden xsDown>
+                  <Grid item md={1} lg={2} align="center" />
+                </Hidden>
               </Grid>
             </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <div>
-              <Grid container spacing={2} justify='center'>
-                <Grid item xs={0} md={1} lg={2} align='center' />
-                <Grid item xs={12} md={10} lg={8} align='center'>
+              <Grid container spacing={2} justify="center">
+                <Hidden xsDown>
+                  <Grid item md={1} lg={2} align="center" />
+                </Hidden>
+                <Grid item xs={12} md={10} lg={8} align="center">
                   <Card>
                     {/* <Typography variant='h6'>Login to Wheelhouse</Typography> */}
                     <Formik
@@ -154,53 +162,53 @@ const LoginPage = props => {
                       {({ isSubmitting }) => (
                         <Form style={{ display: 'flex', flexWrap: 'wrap' }}>
                           <Field
-                            name='username'
-                            label='Username'
-                            type='text'
+                            name="username"
+                            label="Username"
+                            type="text"
                             component={TextField}
-                            margin='normal'
+                            margin="normal"
                             required={true}
-                            variant='outlined'
-                            autoComplete='username'
+                            variant="outlined"
+                            autoComplete="username"
                             fullWidth
                           />
                           <Field
-                            name='email'
-                            label='Email'
-                            type='email'
+                            name="email"
+                            label="Email"
+                            type="email"
                             component={TextField}
-                            margin='normal'
+                            margin="normal"
                             required={true}
-                            variant='outlined'
-                            autoComplete='email'
+                            variant="outlined"
+                            autoComplete="email"
                             fullWidth
                           />
                           <Field
-                            name='password'
-                            label='Password'
-                            type='password'
+                            name="password"
+                            label="Password"
+                            type="password"
                             component={TextField}
-                            margin='normal'
+                            margin="normal"
                             required={true}
-                            variant='outlined'
-                            autoComplete='current-password'
+                            variant="outlined"
+                            autoComplete="current-password"
                             fullWidth
                           />
                           <Field
-                            name='password2'
-                            label='Confirm Password'
-                            type='password'
+                            name="password2"
+                            label="Confirm Password"
+                            type="password"
                             component={TextField}
-                            margin='normal'
+                            margin="normal"
                             required={true}
-                            variant='outlined'
-                            autoComplete='current-password'
+                            variant="outlined"
+                            autoComplete="current-password"
                             fullWidth
                           />
                           <Button
-                            variant='contained'
-                            type='submit'
-                            color='primary'
+                            variant="contained"
+                            type="submit"
+                            color="primary"
                             disabled={isSubmitting}
                             style={{ marginTop: '8px', height: '50px' }}
                             fullWidth>
@@ -211,13 +219,17 @@ const LoginPage = props => {
                     </Formik>
                   </Card>
                 </Grid>
-                <Grid item xs={0} md={1} lg={2} align='center' />
+                <Hidden xsDown>
+                  <Grid item md={1} lg={2} align="center" />
+                </Hidden>
               </Grid>
             </div>
           </TabContainer>
         </SwipeableViews>
       </Grid>
-      <Grid item xs={0} md={3} align='center' />
+      <Hidden xsDown>
+        <Grid item md={3} align="center" />
+      </Hidden>
     </Grid>
   );
 };
