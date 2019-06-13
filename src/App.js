@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 //Date Util Libraries
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
@@ -25,39 +25,9 @@ import NewProjectPage from './Components/Pages/newProjectPage';
 
 import getTheme from './getTheme';
 
-// Hook
-function useWindowSize() {
-  const isClient = typeof window === 'object';
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  function getSize() {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined,
-    };
-  }
-
-  const [windowSize, setWindowSize] = useState(getSize);
-
-  useEffect(() => {
-    if (!isClient) {
-      return false;
-    }
-
-    function handleResize() {
-      setWindowSize(getSize());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [getSize, isClient]); // Empty array ensures that effect is only run on mount and unmount|UPDATE: can make it empty?! :/
-
-  return windowSize;
-}
-
 const App = props => {
   var storageTheme =
-    localStorage.getItem('theme') === undefined ? 'light' : localStorage.getItem('theme');
+    localStorage.getItem('theme') === null ? 'light' : localStorage.getItem('theme');
   const [isLightTheme, setIsLightTheme] = useState(storageTheme === 'light');
   const [themeIcon, setThemeIcon] = useState(storageTheme === 'light' ? '🌑' : '🌞');
   const [isDrawerPresent, setIsDrawerPresent] = useState(false);
@@ -75,8 +45,6 @@ const App = props => {
   const toggleDrawer = useCallback(() => {
     setIsDrawerPresent(!isDrawerPresent);
   });
-
-  const size = useWindowSize();
 
   const navLinks = {
     Home: '/',
@@ -99,7 +67,6 @@ const App = props => {
               toggleDrawer={toggleDrawer}
               themeIcon={themeIcon}
               navLinks={navLinks}
-              wideScreen={size.width >= 1280}
             />
             <SwipeableDrawer open={isDrawerPresent} onClose={toggleDrawer} onOpen={toggleDrawer}>
               <div
@@ -130,7 +97,11 @@ const App = props => {
               <Route path="/projectpage" exact component={ProjectProfile} />
               <Route path="/searchpage" exact component={SearchPage} />
               <Route path="/usersettings" exact component={UserSettingsPage} />
-              <Route path="/messagespage" exact component={MessagesPage} />
+              <Route
+                path="/messagespage"
+                exact
+                render={() => <MessagesPage appTheme={appTheme} />}
+              />
               <Route path="/newprojectpage" exact component={NewProjectPage} />
             </Switch>
             <p />
