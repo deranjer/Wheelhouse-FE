@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { DatePicker } from "@material-ui/pickers";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Stepper, Stop, StepLabel } from "@material-ui/core";
+import { Stepper, Step, StepLabel } from "@material-ui/core";
 import API from "../../api";
 import {
   Menu,
@@ -122,7 +122,27 @@ const NewProjectPage = props => {
   return (
     <React.Fragment>
       <Grid container justify="center">
-        <Grid item xs={12} lg={8} xl={8} />
+        <Grid item xs={12} lg={8} xl={8}>
+          <Stepper activeStep={activeStep}>
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = {};
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                );
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel {...labelProps}>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+        </Grid>
       </Grid>
       <Grid container spacing={2} justify="center">
         <Grid item xs={12} lg={8} xl={8}>
