@@ -1,43 +1,43 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 //Date Util Libraries
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import MomentUtils from "@date-io/moment";
 //
-import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import { Button } from '@material-ui/core';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { ThemeProvider } from '@material-ui/styles';
+import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import List from "@material-ui/core/List";
+import { Button } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import { ThemeProvider } from "@material-ui/styles";
 
-import HomePage from './Components/Pages/homepage';
-import ExamplePage from './Components/Pages/examplePage';
-import UserProfile from './Components/Pages/userProfilePage';
-import ProjectProfile from './Components/Pages/projectPage';
-import LoginPage from './Components/Pages/loginPage';
-import SearchPage from './Components/Pages/searchPage';
-import UserSettingsPage from './Components/Pages/userSettingsPage';
-import MessagesPage from './Components/Pages/messagesPage';
-import TopNavBar from './Components/PageComponents/TopNavBar/TopNavBar';
-import NewProjectPage from './Components/Pages/newProjectPage';
+import HomePage from "./Components/Pages/homepage";
+import ExamplePage from "./Components/Pages/examplePage";
+import UserProfile from "./Components/Pages/userProfilePage";
+import ProjectProfile from "./Components/Pages/projectPage";
+import LoginPage from "./Components/Pages/loginPage";
+import SearchPage from "./Components/Pages/searchPage";
+import UserSettingsPage from "./Components/Pages/userSettingsPage";
+import MessagesPage from "./Components/Pages/messagesPage";
+import TopNavBar from "./Components/PageComponents/TopNavBar/TopNavBar";
+import NewProjectPage from "./Components/Pages/newProjectPage";
 
-import getTheme from './getTheme';
+import getTheme from "./getTheme";
 
 const App = props => {
   var storageTheme =
-    localStorage.getItem('theme') === null ? 'light' : localStorage.getItem('theme');
-  const [isLightTheme, setIsLightTheme] = useState(storageTheme === 'light');
-  const [themeIcon, setThemeIcon] = useState(storageTheme === 'light' ? '🌑' : '🌞');
+    localStorage.getItem("theme") === null ? "light" : localStorage.getItem("theme");
+  const [isLightTheme, setIsLightTheme] = useState(storageTheme === "light");
+  const [themeIcon, setThemeIcon] = useState(storageTheme === "light" ? "🌑" : "🌞");
   const [isDrawerPresent, setIsDrawerPresent] = useState(false);
 
   let appTheme = getTheme({ paletteType: storageTheme });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const toggleTheme = useCallback(() => {
-    setThemeIcon(!isLightTheme ? '🌑' : '🌞');
-    localStorage.setItem('theme', isLightTheme ? 'dark' : 'light');
+    setThemeIcon(!isLightTheme ? "🌑" : "🌞");
+    localStorage.setItem("theme", isLightTheme ? "dark" : "light");
     setIsLightTheme(!isLightTheme);
   });
 
@@ -47,14 +47,14 @@ const App = props => {
   });
 
   const navLinks = {
-    Home: '/',
-    Login: '/login',
-    Profile: '/userprofile',
-    Examples: '/examples',
-    Project: '/projectpage',
-    'New Project': '/newprojectpage',
-    Search: '/searchpage',
-    Settings: '/usersettings',
+    Home: "/",
+    Login: "/login",
+    Profile: "/userprofile",
+    Examples: "/examples",
+    Project: "/projectpage",
+    "New Project": "/newprojectpage",
+    Search: "/searchpage",
+    Settings: "/usersettings",
   };
   return (
     <ThemeProvider theme={appTheme}>
@@ -80,7 +80,7 @@ const App = props => {
                       <Button>
                         <Link
                           to={navLinks[k]}
-                          style={{ textDecoration: 'none', color: isLightTheme ? '#000' : '#fff' }}>
+                          style={{ textDecoration: "none", color: isLightTheme ? "#000" : "#fff" }}>
                           <ListItemText primary={k} />
                         </Link>
                       </Button>
@@ -91,7 +91,7 @@ const App = props => {
             </SwipeableDrawer>
             <Switch>
               <Route path="/" exact component={HomePage} />} />
-              <Route path="/userprofile" exact component={UserProfile} />
+              <Route path="/userprofile" exact render={() => <UserProfile appTheme={appTheme} />} />
               <Route path="/login" exact component={LoginPage} />
               <Route path="/examples" exact component={ExamplePage} />
               <Route path="/projectpage" exact component={ProjectProfile} />
