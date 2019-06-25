@@ -12,25 +12,89 @@ import {
   TextField
 } from "@material-ui/core";
 import { IconButton, Button, Fab } from "@material-ui/core";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions
+} from "@material-ui/core";
 import Search from "@material-ui/icons/Search";
+import Add from "@material-ui/icons/Add";
+import UserProjectPositionMiniCard from "../UserComponents/UserProjectPositionMiniCard";
+import { setPropTypes } from "recompose";
 
 const NewProjectTeam = props => {
+  const [openPositions, setOpenPositions] = React.useState(false);
+  const [newPosition, setNewPosition] = React.useState("");
+  const [newUserID, setNewUserID] = React.useState("");
+  const [positionCards = [userID, position], setPositionCards] = React.useState(
+    "[]"
+  );
+
+  const handleAddPositionOpen = () => {
+    setOpenPositions(true);
+  };
+
+  const handleAddPositionClose = () => {
+    setOpenPositions(false);
+  };
+
+  const handleAddPositionSubmit = () => {
+    setPositionCards(...positionCards, [newUserID, newPosition]);
+  };
+
   return (
     <Grid item xs={12} lg={8} xl={8}>
       <Paper style={{ textAlign: "center", height: "100%" }}>
-        <Typography variant="h4">Send out invites to team members</Typography>
+        <Typography variant="h6">Add Positions</Typography>
         <br />
-        <TextField
-          id="searchInput"
-          label="Search for Users"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            )
-          }}
-        />
+        <Fab color="primary" aria-label="Add" onClick={handleAddPositionOpen}>
+          <Add />
+        </Fab>
+        <Dialog
+          open={openPositions}
+          onClose={handleAddPositionClose}
+          aria-labelledby="add-pos-dialog"
+        >
+          <DialogTitle id="add-pos-dialog">Add Positions</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Enter a position on the team and search for a user to add
+              (optional)
+            </DialogContentText>
+            <TextField
+              id="positionName"
+              label="Position"
+              onChange={setNewPosition}
+            />
+            <TextField
+              id="searchInput"
+              label="Search for Users"
+              onChange={setNewUserID}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                )
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleAddPositionSubmit} color="primary">
+              Save and Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <br />
+        {positionCards.items.data.map(item => (
+          <UserProjectPositionMiniCard
+            userID={item.userID}
+            position={item.position}
+          />
+        ))}
         <Formik>
           <Form />
         </Formik>
