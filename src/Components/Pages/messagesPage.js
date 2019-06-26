@@ -10,7 +10,7 @@ import {
   Grid,
   TextField,
   Paper,
-  Hidden
+  Hidden,
 } from "@material-ui/core";
 //import { makeStyles } from '@material-ui/styles';
 
@@ -21,25 +21,30 @@ import getMessagesPageClasses from "../../Styles/messagesPageStyles";
 import api from "../../api";
 
 const MessagesPage = props => {
+  const getTestMessages = user => {
+    return [
+      {
+        id: 1,
+        position: "left",
+        type: "text",
+        text: "[something interesting], do you have time?",
+        date: new Date(),
+      },
+      {
+        id: 2,
+        position: "right",
+        type: "text",
+        text: `Hello ${user.full_name}! sounds interesting, more details?`,
+        date: new Date(),
+      },
+    ];
+  };
+
   const userId = localStorage.getItem("userId") || "1";
   const [user, setUser] = useState(null);
   const [latestContacts, setLatestContacts] = useState([]);
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      position: "left",
-      type: "text",
-      text: "[something interesting], do you have time?",
-      date: new Date()
-    },
-    {
-      id: 2,
-      position: "right",
-      type: "text",
-      text: "Hello! sounds interesting, more details?",
-      date: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState(getTestMessages({ full_name: "User 2" }));
+  const [activeUser, setActiveUser] = useState(undefined);
 
   var refInput = null; // temp, until a solution comes
 
@@ -59,55 +64,44 @@ const MessagesPage = props => {
   // should be async when the call is real...
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getLatestContacts = () => {
-    try {
-      //
-      // const response = await API.get(`/users/${userId}/contacts/latest`);
-      var users = [
-        {
-          id: 2,
-          full_name: "User 2",
-          username: "monitor2",
-          email: "deliverables0@faker.net",
-          password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
-          profile_photo_url: null,
-          header_photo_url: null,
-          work_status: "Employed",
-          bio: null,
-          permissions_id: null
-        },
-        {
-          id: 3,
-          full_name: "User 3",
-          username: "monitor3",
-          email: "deliverables0@faker.net",
-          password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
-          profile_photo_url: null,
-          header_photo_url: null,
-          work_status: "Employed",
-          bio: null,
-          permissions_id: null
-        },
-        {
-          id: 4,
-          full_name: "User 4",
-          username: "monitor4",
-          email: "deliverables0@faker.net",
-          password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
-          profile_photo_url: null,
-          header_photo_url: null,
-          work_status: "Employed",
-          bio: null,
-          permissions_id: null
-        }
-      ];
-      var usersUI = [];
-      users.forEach(u =>
-        usersUI.push(<MenuItem key={u.id}>{u.full_name}</MenuItem>)
-      );
-      setLatestContacts(usersUI);
-    } catch (error) {
-      console.error(error);
-    }
+    setLatestContacts([
+      {
+        id: 2,
+        full_name: "User 2",
+        username: "monitor2",
+        email: "deliverables0@faker.net",
+        password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
+        profile_photo_url: null,
+        header_photo_url: null,
+        work_status: "Employed",
+        bio: null,
+        permissions_id: null,
+      },
+      {
+        id: 3,
+        full_name: "User 3",
+        username: "monitor3",
+        email: "deliverables0@faker.net",
+        password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
+        profile_photo_url: null,
+        header_photo_url: null,
+        work_status: "Employed",
+        bio: null,
+        permissions_id: null,
+      },
+      {
+        id: 4,
+        full_name: "User 4",
+        username: "monitor4",
+        email: "deliverables0@faker.net",
+        password: "d2800ce0-8f0b-4068-abc1-c1ba284cad2e",
+        profile_photo_url: null,
+        header_photo_url: null,
+        work_status: "Employed",
+        bio: null,
+        permissions_id: null,
+      },
+    ]);
   };
 
   const sendMessage = () => {
@@ -123,10 +117,22 @@ const MessagesPage = props => {
         position: "right", // because sender
         type: "text",
         text: msg,
-        date: new Date()
-      }
+        date: new Date(),
+      },
+      {
+        id: messages[messages.length - 1].id + 2, // a fake reply
+        position: "left", // because recipient
+        type: "text",
+        text: `just echoin' ${msg}`,
+        date: new Date(),
+      },
     ]); // push the new message
     refInput.state.value = "";
+  };
+
+  const changeUser = u => {
+    setActiveUser(u);
+    setMessages(getTestMessages(u));
   };
 
   // useEffect(() => {
@@ -151,7 +157,13 @@ const MessagesPage = props => {
         <Hidden mdDown>
           <Grid item lg={2} xl={2}>
             <Typography variant="h6">Most Recent Contacts</Typography>
-            {latestContacts}
+            {latestContacts.map((u, i) => {
+              return (
+                <MenuItem key={u.id} onClick={e => changeUser(u)}>
+                  {u.full_name}
+                </MenuItem>
+              );
+            })}
           </Grid>
         </Hidden>
         <Grid item xs={12} lg={6} xl={6} overflow="hidden">
@@ -171,10 +183,8 @@ const MessagesPage = props => {
               ref={el => (refInput = el)}
               onKeyPress={e => {
                 if (e.shiftKey && e.charCode === 13) {
-                  console.log("new line");
                   return true;
                 } else if (!e.shiftKey && e.charCode === 13) {
-                  console.log("send");
                   sendMessage();
                   e.preventDefault();
                   return false;
@@ -190,7 +200,7 @@ const MessagesPage = props => {
 };
 
 MessagesPage.propTypes = {
-  userID: PropTypes.string
+  userID: PropTypes.string,
   //TODO: Add More PropTypes
 };
 
