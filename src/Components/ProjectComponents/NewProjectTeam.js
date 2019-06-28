@@ -28,9 +28,7 @@ const NewProjectTeam = props => {
   const [openPositions, setOpenPositions] = React.useState(false);
   const [newPosition, setNewPosition] = React.useState("");
   const [newUserID, setNewUserID] = React.useState("");
-  const [positionCards = [userID, position], setPositionCards] = React.useState(
-    "[]"
-  );
+  const [positionCards, setPositionCards] = React.useState([{}]);
 
   const handleAddPositionOpen = () => {
     setOpenPositions(true);
@@ -41,7 +39,13 @@ const NewProjectTeam = props => {
   };
 
   const handleAddPositionSubmit = () => {
-    setPositionCards(...positionCards, [newUserID, newPosition]);
+    setPositionCards([
+      ...positionCards,
+      {
+        userID: newUserID,
+        position: newPosition
+      }
+    ]);
   };
 
   return (
@@ -89,12 +93,17 @@ const NewProjectTeam = props => {
         </Dialog>
 
         <br />
-        {positionCards.items.data.map(item => (
-          <UserProjectPositionMiniCard
-            userID={item.userID}
-            position={item.position}
-          />
-        ))}
+        {positionCards.map(
+          index => (
+            console.log("POS CARD", positionCards),
+            (
+              <UserProjectPositionMiniCard
+                userID={index.userID}
+                position={index.position}
+              />
+            )
+          )
+        )}
         <Formik>
           <Form />
         </Formik>
