@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { Grid, Card, Typography, Button, Hidden } from '@material-ui/core';
-import { Formik, Form, Field } from 'formik';
-import { TextField } from 'formik-material-ui';
+import React from "react";
+import PropTypes from "prop-types";
+import SwipeableViews from "react-swipeable-views";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import { Grid, Card, Typography, Button, Hidden } from "@material-ui/core";
+import { Formik, Form, Field } from "formik";
+import { TextField } from "formik-material-ui";
 import {
   FacebookLoginButton,
   TwitterLoginButton,
@@ -15,7 +15,7 @@ import {
   GoogleLoginButton,
   InstagramLoginButton,
   LinkedInLoginButton,
-} from 'react-social-login-buttons';
+} from "react-social-login-buttons";
 
 const LoginPage = props => {
   function TabContainer({ children, dir }) {
@@ -34,8 +34,6 @@ const LoginPage = props => {
   const useStyles = makeStyles(theme => ({
     root: {
       backgroundColor: theme.palette.background.paper,
-      maxWidth: '90vw',
-      margin: '0 auto',
     },
   }));
 
@@ -55,9 +53,9 @@ const LoginPage = props => {
   return (
     <Grid container>
       <Hidden xsDown>
-        <Grid item md={3} align="center" />
+        <Grid item md={3} />
       </Hidden>
-      <Grid item xs={12} md={6} align="center" className={classes.root}>
+      <Grid item xs={12} md={6} className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
             value={value}
@@ -70,20 +68,20 @@ const LoginPage = props => {
           </Tabs>
         </AppBar>
         <SwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={value}
           onChangeIndex={handleChangeIndex}>
           <TabContainer dir={theme.direction}>
             <div>
               <Grid container spacing={2}>
                 <Hidden xsDown>
-                  <Grid item md={1} lg={2} align="center" />
+                  <Grid item md={1} lg={2} />
                 </Hidden>
-                <Grid item xs={12} md={10} lg={8} align="center">
+                <Grid item xs={12} md={10} lg={8}>
                   <Card>
                     {/* <Typography variant='h6'>Login to Wheelhouse</Typography> */}
                     <Formik
-                      initialValues={{ username: '', password: '' }}
+                      initialValues={{ username: "", password: "" }}
                       onSubmit={(values, { setSubmitting }) => {
                         // TODO:: replace with the actual api call...
                         setTimeout(() => {
@@ -92,7 +90,7 @@ const LoginPage = props => {
                         }, 400);
                       }}>
                       {({ isSubmitting }) => (
-                        <Form style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <Form style={{ display: "flex", flexDirection: "column" }}>
                           <Field
                             name="username"
                             label="Username"
@@ -120,23 +118,23 @@ const LoginPage = props => {
                             type="submit"
                             color="primary"
                             disabled={isSubmitting}
-                            style={{ marginTop: '8px', height: '50px' }}
+                            style={{ marginTop: "8px", height: "50px" }}
                             fullWidth>
                             Login
                           </Button>
-                          <FacebookLoginButton style={{ width: '100%', margin: '8px 0 0 0' }} />
-                          <TwitterLoginButton style={{ width: '100%', margin: '8px 0 0 0' }} />
-                          <InstagramLoginButton style={{ width: '100%', margin: '8px 0 0 0' }} />
-                          <GoogleLoginButton style={{ width: '100%', margin: '8px 0 0 0' }} />
-                          <LinkedInLoginButton style={{ width: '100%', margin: '8px 0 0 0' }} />
-                          <GithubLoginButton style={{ width: '100%', margin: '8px 0 0 0' }} />
+                          <FacebookLoginButton style={{ width: "100%", margin: "8px 0 0 0" }} />
+                          <TwitterLoginButton style={{ width: "100%", margin: "8px 0 0 0" }} />
+                          <InstagramLoginButton style={{ width: "100%", margin: "8px 0 0 0" }} />
+                          <GoogleLoginButton style={{ width: "100%", margin: "8px 0 0 0" }} />
+                          <LinkedInLoginButton style={{ width: "100%", margin: "8px 0 0 0" }} />
+                          <GithubLoginButton style={{ width: "100%", margin: "8px 0 0 0" }} />
                         </Form>
                       )}
                     </Formik>
                   </Card>
                 </Grid>
                 <Hidden xsDown>
-                  <Grid item md={1} lg={2} align="center" />
+                  <Grid item md={1} lg={2} />
                 </Hidden>
               </Grid>
             </div>
@@ -145,13 +143,13 @@ const LoginPage = props => {
             <div>
               <Grid container spacing={2} justify="center">
                 <Hidden xsDown>
-                  <Grid item md={1} lg={2} align="center" />
+                  <Grid item md={1} lg={2} />
                 </Hidden>
-                <Grid item xs={12} md={10} lg={8} align="center">
+                <Grid item xs={12} md={10} lg={8}>
                   <Card>
                     {/* <Typography variant='h6'>Login to Wheelhouse</Typography> */}
                     <Formik
-                      initialValues={{ username: '', password: '' }}
+                      initialValues={{ username: "", password: "" }}
                       onSubmit={(values, { setSubmitting }) => {
                         // TODO:: replace with the actual api call...
                         setTimeout(() => {
@@ -160,7 +158,7 @@ const LoginPage = props => {
                         }, 400);
                       }}>
                       {({ isSubmitting }) => (
-                        <Form style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <Form style={{ display: "flex", flexWrap: "wrap" }}>
                           <Field
                             name="username"
                             label="Username"
@@ -210,7 +208,7 @@ const LoginPage = props => {
                             type="submit"
                             color="primary"
                             disabled={isSubmitting}
-                            style={{ marginTop: '8px', height: '50px' }}
+                            style={{ marginTop: "8px", height: "50px" }}
                             fullWidth>
                             Register
                           </Button>
@@ -220,7 +218,7 @@ const LoginPage = props => {
                   </Card>
                 </Grid>
                 <Hidden xsDown>
-                  <Grid item md={1} lg={2} align="center" />
+                  <Grid item md={1} lg={2} />
                 </Hidden>
               </Grid>
             </div>
@@ -228,7 +226,7 @@ const LoginPage = props => {
         </SwipeableViews>
       </Grid>
       <Hidden xsDown>
-        <Grid item md={3} align="center" />
+        <Grid item md={3} />
       </Hidden>
     </Grid>
   );

@@ -26,11 +26,28 @@ import NewProjectPage from "./Components/Pages/newProjectPage";
 import getTheme from "./getTheme";
 
 const App = props => {
+  const getTestNotifications = () => {
+    var notifs = [];
+    for (var i = 1; i <= 4; i++) {
+      notifs.push({
+        id: i,
+        title: `notificaion #${i}`,
+        text: `text of notification ${i}`,
+        img: "https://via.placeholder.com/32",
+        link: "/",
+        timestamp: Date.now(),
+        read: false,
+      });
+    }
+    return notifs;
+  };
+
   var storageTheme =
     localStorage.getItem("theme") === null ? "light" : localStorage.getItem("theme");
   const [isLightTheme, setIsLightTheme] = useState(storageTheme === "light");
   const [themeIcon, setThemeIcon] = useState(storageTheme === "light" ? "🌑" : "🌞");
   const [isDrawerPresent, setIsDrawerPresent] = useState(false);
+  const [notifications, setNotifications] = useState(getTestNotifications());
 
   let appTheme = getTheme({ paletteType: storageTheme });
 
@@ -67,6 +84,7 @@ const App = props => {
               toggleDrawer={toggleDrawer}
               themeIcon={themeIcon}
               navLinks={navLinks}
+              notifications={notifications}
             />
             <SwipeableDrawer open={isDrawerPresent} onClose={toggleDrawer} onOpen={toggleDrawer}>
               <div
