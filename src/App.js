@@ -10,7 +10,7 @@ import { Button } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { ThemeProvider } from "@material-ui/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
 import HomePage from "./Components/Pages/homepage";
 import ExamplePage from "./Components/Pages/examplePage";
@@ -79,11 +79,10 @@ const App = props => {
     Settings: "/usersettings"
   };
 
-  console.log(appTheme.palette.type);
-
   return (
     <MuiPickersUtilsProvider utils={MomentUtils}>
-      <ThemeProvider theme={appTheme}>
+      <MuiThemeProvider theme={appTheme}>
+        <CssBaseline />
         <Router>
           <div>
             <TopNavBar
@@ -152,7 +151,7 @@ const App = props => {
             <p />
           </div>
         </Router>
-      </ThemeProvider>
+      </MuiThemeProvider>
     </MuiPickersUtilsProvider>
   );
 };

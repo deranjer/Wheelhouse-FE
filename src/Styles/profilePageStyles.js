@@ -75,9 +75,7 @@ function getProfilePageClasses(theme) {
     root: {
       marginTop: "10px",
       "& .MuiGrid-item": {
-        [theme.breakpoints.down("sm")]: {
-          marginTop: "10px!important"
-        }
+        marginTop: "10px!important"
       },
 
       "& .MuiGrid-item > .MuiChip-root": {
