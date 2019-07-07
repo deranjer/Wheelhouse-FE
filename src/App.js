@@ -125,7 +125,7 @@ const App = props => {
               <Route
                 path="/userprofile"
                 exact
-                render={() => <UserProfile appTheme={appTheme} />}
+                render={props => <UserProfile appTheme={appTheme} {...props} />}
               />
               <Route path="/login" exact component={LoginPage} />
               <Route path="/examples" exact component={ExamplePage} />

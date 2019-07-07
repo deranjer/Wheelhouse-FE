@@ -44,6 +44,10 @@ const UserProfile = props => {
     getUser();
   }, []);
 
+  const gotoContacts = () => {
+    props.history.push("/users/1/contacts");
+  };
+
   const classes = getProfilePageClasses(props.appTheme);
 
   return (
@@ -83,7 +87,11 @@ const UserProfile = props => {
           <Button variant="contained" type="submit" color="primary">
             Message
           </Button>
-          <Button variant="contained" type="submit" color="primary">
+          <Button
+            variant="contained"
+            type="submit"
+            color="primary"
+            onClick={gotoContacts}>
             Contacts
           </Button>
         </Grid>
