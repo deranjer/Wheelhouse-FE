@@ -13,7 +13,7 @@ import {
   Card,
   CardContent,
   CardDescription,
-  Hidden,
+  Hidden
 } from "@material-ui/core";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -83,15 +83,19 @@ const UserProfile = props => {
           <Button variant="contained" type="submit" color="primary">
             Message
           </Button>
+          <Button variant="contained" type="submit" color="primary">
+            Contacts
+          </Button>
         </Grid>
       </Grid>
       <Grid container justify="center" className={classes.AboutClasses.root}>
         <Grid item xs={12} md={5} lg={4}>
           <Card>
             <CardContent>
-              I am an experienced user with Blender and Substance Painter. I have a one released
-              game created with Unity. I also have a lot of experience with UE4 Blueprints,
-              materials and Niagara System. Looking for a unique game to create.
+              I am an experienced user with Blender and Substance Painter. I
+              have a one released game created with Unity. I also have a lot of
+              experience with UE4 Blueprints, materials and Niagara System.
+              Looking for a unique game to create.
             </CardContent>
           </Card>
         </Grid>

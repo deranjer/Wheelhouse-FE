@@ -22,6 +22,7 @@ import UserSettingsPage from "./Components/Pages/userSettingsPage";
 import MessagesPage from "./Components/Pages/messagesPage";
 import TopNavBar from "./Components/PageComponents/TopNavBar/TopNavBar";
 import NewProjectPage from "./Components/Pages/newProjectPage";
+import ContactsPage from "./Components/Pages/contactsPage";
 
 import getTheme from "./getTheme";
 
@@ -36,16 +37,20 @@ const App = props => {
         img: "https://via.placeholder.com/32",
         link: "/",
         timestamp: Date.now(),
-        read: false,
+        read: false
       });
     }
     return notifs;
   };
 
   var storageTheme =
-    localStorage.getItem("theme") === null ? "light" : localStorage.getItem("theme");
+    localStorage.getItem("theme") === null
+      ? "light"
+      : localStorage.getItem("theme");
   const [isLightTheme, setIsLightTheme] = useState(storageTheme === "light");
-  const [themeIcon, setThemeIcon] = useState(storageTheme === "light" ? "🌑" : "🌞");
+  const [themeIcon, setThemeIcon] = useState(
+    storageTheme === "light" ? "🌑" : "🌞"
+  );
   const [isDrawerPresent, setIsDrawerPresent] = useState(false);
   const [notifications, setNotifications] = useState(getTestNotifications());
 
@@ -71,12 +76,14 @@ const App = props => {
     Project: "/projectpage",
     "New Project": "/newprojectpage",
     Search: "/searchpage",
-    Settings: "/usersettings",
+    Settings: "/usersettings"
   };
+
+  console.log(appTheme.palette.type);
+
   return (
-    <ThemeProvider theme={appTheme}>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
-        <CssBaseline />
+    <MuiPickersUtilsProvider utils={MomentUtils}>
+      <ThemeProvider theme={appTheme}>
         <Router>
           <div>
             <TopNavBar
@@ -86,7 +93,10 @@ const App = props => {
               navLinks={navLinks}
               notifications={notifications}
             />
-            <SwipeableDrawer open={isDrawerPresent} onClose={toggleDrawer} onOpen={toggleDrawer}>
+            <SwipeableDrawer
+              open={isDrawerPresent}
+              onClose={toggleDrawer}
+              onOpen={toggleDrawer}>
               <div
                 style={{ width: 270 }}
                 role="presentation"
@@ -98,7 +108,10 @@ const App = props => {
                       <Button>
                         <Link
                           to={navLinks[k]}
-                          style={{ textDecoration: "none", color: isLightTheme ? "#000" : "#fff" }}>
+                          style={{
+                            textDecoration: "none",
+                            color: isLightTheme ? "#000" : "#fff"
+                          }}>
                           <ListItemText primary={k} />
                         </Link>
                       </Button>
@@ -109,7 +122,11 @@ const App = props => {
             </SwipeableDrawer>
             <Switch>
               <Route path="/" exact component={HomePage} />} />
-              <Route path="/userprofile" exact render={() => <UserProfile appTheme={appTheme} />} />
+              <Route
+                path="/userprofile"
+                exact
+                render={() => <UserProfile appTheme={appTheme} />}
+              />
               <Route path="/login" exact component={LoginPage} />
               <Route path="/examples" exact component={ExamplePage} />
               <Route path="/projectpage" exact component={ProjectProfile} />
@@ -121,12 +138,22 @@ const App = props => {
                 render={() => <MessagesPage appTheme={appTheme} />}
               />
               <Route path="/newprojectpage" exact component={NewProjectPage} />
+              <Route
+                path="/users/:id/contacts"
+                exact
+                render={props => (
+                  <ContactsPage
+                    appTheme={appTheme}
+                    id={props.match.params.id}
+                  />
+                )}
+              />
             </Switch>
             <p />
           </div>
         </Router>
-      </MuiPickersUtilsProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </MuiPickersUtilsProvider>
   );
 };
 

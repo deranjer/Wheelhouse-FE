@@ -58,6 +58,7 @@ const ProjectProfile = props => {
         <Grid item xs={12} lg={8} xl={8}>
           {/*  Header Image */}
           <img
+            alt="header"
             style={profileBGImageStyle}
             src="https://www.van-tramp.com/wp/wp-content/uploads/2013/07/IMG_5831.jpg"
           />
@@ -84,15 +85,13 @@ const ProjectProfile = props => {
               <Button
                 style={{ margin: "4px" }}
                 variant="contained"
-                color="primary"
-              >
+                color="primary">
                 Message
               </Button>
               <Button
                 style={{ margin: "4px" }}
                 variant="contained"
-                color="primary"
-              >
+                color="primary">
                 Follow
               </Button>
             </Grid>
@@ -159,8 +158,7 @@ const ProjectProfile = props => {
               container
               justify="center"
               spacing={2}
-              style={{ maxWidth: "700px" }}
-            >
+              style={{ maxWidth: "700px" }}>
               <Grid item>
                 <StatusUpdate />
               </Grid>
