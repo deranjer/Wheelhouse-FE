@@ -31,7 +31,7 @@ const UserProfile = props => {
 
   async function getUser() {
     try {
-      const response = await API.get(`users/2`);
+      const response = await API.get(`user/1`);
       console.log(response);
       console.log(response.data);
       setUser(response.data);
@@ -45,7 +45,7 @@ const UserProfile = props => {
   }, []);
 
   const gotoContacts = () => {
-    props.history.push("/users/1/contacts");
+    props.history.push("/user/1/contacts");
   };
 
   const classes = getProfilePageClasses(props.appTheme);
@@ -76,9 +76,7 @@ const UserProfile = props => {
       </Grid>
       <Grid container justify="center" className={classes.TaglineClasses.root}>
         <Grid item xs={12} md={5} lg={4}>
-          <Typography variant="subtitle1">
-            Here is my tagline that is under 240 that shows up on my profilecard
-          </Typography>
+          <Typography variant="subtitle1">{user.tagline}</Typography>
         </Grid>
         <Grid item xs={12} md={5} lg={4} container justify="flex-end">
           <Button variant="contained" type="submit" color="primary">
@@ -91,7 +89,8 @@ const UserProfile = props => {
             variant="contained"
             type="submit"
             color="primary"
-            onClick={gotoContacts}>
+            onClick={gotoContacts}
+          >
             Contacts
           </Button>
         </Grid>
@@ -99,12 +98,7 @@ const UserProfile = props => {
       <Grid container justify="center" className={classes.AboutClasses.root}>
         <Grid item xs={12} md={5} lg={4}>
           <Card>
-            <CardContent>
-              I am an experienced user with Blender and Substance Painter. I
-              have a one released game created with Unity. I also have a lot of
-              experience with UE4 Blueprints, materials and Niagara System.
-              Looking for a unique game to create.
-            </CardContent>
+            <CardContent>{user.bio}</CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={5} lg={4} container justify="space-evenly">
